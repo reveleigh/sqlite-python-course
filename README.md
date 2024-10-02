@@ -1,1 +1,1 @@
-# sqlite-python-course
+# Welcome to the SQLite Course
