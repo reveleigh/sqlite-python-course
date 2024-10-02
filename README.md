@@ -1,1 +1,1 @@
-# sqlite-python-course
+# Lesson 2
