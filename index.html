@@ -14,51 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Sono:wght@200;300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <style>
-      body {
-        background-color: #282c34;
-        color: white;
-        font-family: "Sono", sans-serif;
-      }
-      .card {
-        margin-bottom: 20px;
-      }
-      .btn-dark-blue {
-        background-color: #0056b3;
-        border-color: #0056b3;
-        color: white;
-        width: 50%;
-        margin: 0 auto;
-      }
-      .btn-dark-blue:hover {
-        background-color: #004494;
-        border-color: #003a7c;
-        color: grey;
-      }
-      .row {
-        display: flex;
-        flex-wrap: wrap;
-      }
-      .card {
-        display: flex;
-        flex-direction: column;
-      }
-      .card-body {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-      .container {
-        width: 90%;
-        margin: 0 auto;
-      }
-      @media (min-width: 577px) {
-        .container {
-          width: 50%;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
     <div class="container">
@@ -72,7 +28,7 @@
         {
           title: "Lesson 1",
           description: "Installing DB Browser for SQLite.",
-          link: "lesson1.html",
+          link: "lesson-1",
         },
         {
           title: "Lesson 2",
@@ -106,9 +62,9 @@
     
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">${lesson.title}</h5>
+                <h5 class="card-title"><img src="images/book.svg" />${lesson.title}</h5>
                 <p class="card-text">${lesson.description}</p>
-                <a href="${lesson.link}" class="btn btn-dark-blue">Go to ${lesson.title}</a>
+                <a href="${lesson.link}" class="btn btn-dark-blue">${lesson.title}</a>
             </div>
         </div>
     
