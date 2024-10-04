@@ -32,6 +32,14 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+
+.concept-box {
+  margin: 30px;
+  background-color: #ffcccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
 .container {
   width: 90%; /* Default: Mobile (small screens) */
   margin: 0 auto;
