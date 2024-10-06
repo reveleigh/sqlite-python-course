@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning SQL with Python</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sono:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <script src="../scripts/script.js" defer></script>
+  </head>
+  <body>
+    <a href="../index.html">
+      <img id="fixed-icon" src="../images/home.svg" alt="Open book"
+    /></a>
+    <div class="container">
+      <h1 class="display-8 text-center mt-5 mb-4">
+        Lesson 1 - CRUD Operations in DB Browser
+      </h1>
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Lesson Overview</h2>
+          <ol>
+            <li>
+              <b>Introduction to SQLite and DB Browser:</b> We'll cover what
+              SQLite is, why it's useful, and how DB Browser makes it easier to
+              work with.
+            </li>
+            <li>
+              <b>Creating a Database and Tables:</b> We'll learn how to create a
+              new SQLite database and define the structure of your data with
+              tables and columns.
+            </li>
+            <li>
+              <b>CRUD Operations:</b> This is the core of our lesson! We'll dive
+              deep into each operation:
+              <ul>
+                <li>
+                  <b>Creating records:</b> Adding new data to your tables.
+                </li>
+                <li>
+                  <b>Reading records:</b> Retrieving data from your tables using
+                  different queries.
+                </li>
+                <li>
+                  <b>Updating records:</b> Modifying existing data in your
+                  tables.
+                </li>
+                <li>
+                  <b>Deleting records:</b> Removing data from your tables.
+                </li>
+              </ul>
+            </li>
+          </ol>
+
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> What is SQLite?
+            </h5>
+            <p class="concept">
+              Picture a quiet, unassuming <span class="redacted">library</span>,
+              residing modestly within your computer. SQLite is a humble
+              <span class="redacted">database</span> system that allows you to
+              organise your <span class="redacted">data</span> with a sense of
+              calm efficiency. It uses a language called SQL (Structured Query
+              Language) to manage this data, but unlike those grand databases
+              that require an imposing server and speak many dialects of SQL,
+              SQLite is content in a single
+              <span class="redacted">file</span> with its own specific version
+              of the language.
+            </p>
+
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> Why is SQLite useful?
+            </h5>
+            <p class="concept">
+              <span class="redacted">Simplicity</span>: It offers a refreshingly
+              straightforward approach.
+            </p>
+            <p class="concept">
+              <span class="redacted">Portability</span>: Carry it with you; it
+              demands little.
+            </p>
+            <p class="concept">
+              <span class="redacted">Efficiency</span>: It performs its tasks
+              without fanfare or complaint.
+            </p>
+
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> What is DB Browser for
+              SQLite?
+            </h5>
+            <p class="concept">
+              DB Browser is a reserved tool that provides a subdued
+              <span class="redacted">interface</span> for managing your SQLite
+              database. It allows you to tend to your data with quiet ease,
+              creating <span class="redacted">databases</span>, defining
+              <span class="redacted">tables</span>, and manipulating data, all
+              without needing to write raw SQL commands.
+            </p>
+          </div>
+          <!--- end concept-box-->
+
+          <h2 class="card-title">Creating a Database and Tables</h2>
+          <p>
+            Imagine acquiring a new, empty bookcase for your quiet library.
+            Before you can begin organising your collection, you must first
+            prepare the shelves. In the world of SQLite, this translates to
+            creating a database and defining its structure with tables.
+          </p>
+
+          <h5 class="card-title">Creating a Database</h5>
+          <p>
+            A database is like that bookcase – a container to hold and organise
+            your information. In SQLite, this container is a single file,
+            residing unobtrusively on your computer. To create this file, we'll
+            use DB Browser for SQLite:
+          </p>
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Create Your First
+              Database
+            </h5>
+            <ol>
+              <li>
+                Open DB Browser for SQLite.<br />
+
+                <img
+                  class="screenshot"
+                  src="screenshots/new-database.png"
+                  alt="DB Browser for SQLite"
+                />
+              </li>
+              <li>Click on "New Database" in the toolbar.</li>
+              <li>
+                Choose a location to save the database file and give it a
+                fitting name, such as "bookshelf.db".
+              </li>
+              <li>Click "Save".</li>
+            </ol>
+          </div>
+
+          <p>
+            You've now brought your new, empty bookcase into existence. It
+            awaits the careful arrangement of your information.
+          </p>
+          <!-- Start Creating Tables-->
+          <h5 class="card-title">Creating Tables</h5>
+          <p>
+            Within your bookcase, you'll want to organise your books into
+            categories. Perhaps you'll have a shelf for fiction, another for
+            non-fiction, and another for poetry. In SQLite, these categories are
+            called tables.
+          </p>
+          <p>
+            A table is a structured collection of data, organised into rows and
+            columns. Each row represents a single item (like a book), and each
+            column represents a specific attribute of that item (like its title,
+            author, or genre).
+          </p>
+          <p>Let's create a table to store information about books:</p>
+
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Create a "books" Table
+            </h5>
+            <ol>
+              <li>In DB Browser, go to the "Create Table" tab.</li>
+              <li>Enter "books" as the table name.</li>
+              <li>Now, define the columns for your table:</li>
+              <ul>
+                <li>
+                  <b>id:</b> A unique identifier for each book (INTEGER data
+                  type, Primary Key, and check the "Autoincrement" box).
+                </li>
+                <li><b>title:</b> The title of the book (TEXT data type).</li>
+                <li><b>author:</b> The author of the book (TEXT data type).</li>
+                <li><b>genre:</b> The genre of the book (TEXT data type).</li>
+              </ul>
+              <li>Click "OK" to create the table.</li>
+            </ol>
+            <img
+              class="screenshot"
+              src="screenshots/create-books-table.png"
+              alt="Create books table"
+            />
+          </div>
+          <!--- end task-box-->
+          <p>
+            You've now created your first table, akin to adding a new shelf to
+            your bookcase and labelling it "books". It's ready to receive the
+            details of your literary collection.
+          </p>
+          <!--- end create tables -->
+
+          <!--- start CRUD Operations -->
+          <h2 class="card-title">CRUD Operations</h2>
+          <p>
+            Now that we've laid the groundwork, it's time to populate our newly
+            created database. This involves the core of database interaction:
+            <b>CRUD operations</b>.
+          </p>
+          <!-- Start Crud concept box -->
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> What is CRUD?
+            </h5>
+            <p>CRUD is an acronym that stands for:</p>
+            <ul>
+              <li>
+                <b>Create:</b> Adding new <span class="redacted">data</span> to
+                your tables.
+              </li>
+              <li>
+                <b>Read:</b> <span class="redacted">Retrieving</span> data from
+                your tables.
+              </li>
+              <li>
+                <b>Update:</b> Modifying existing
+                <span class="redacted">data</span> in your tables.
+              </li>
+              <li>
+                <b>Delete:</b> <span class="redacted">Removing</span> data from
+                your tables.
+              </li>
+            </ul>
+            <p>
+              These four operations are the fundamental building blocks for
+              interacting with any <span class="redacted">database</span>, and
+              SQLite is no exception.
+            </p>
+          </div>
+          <!--- end concept-box-->
+
+          <h5 class="card-title">Creating Records</h5>
+          <p>
+            Imagine carefully placing books onto your newly built shelves. Each
+            book represents a record, a single entry in your database table. To
+            add a book to your "books" table, we'll use the "Browse Data" tab in
+            DB Browser:
+          </p>
+          <!--- start task-box-->
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Add a New Book Record
+            </h5>
+            <ol>
+              <li>Go to the "Browse Data" tab.</li>
+              <li>Select the "books" table.</li>
+              <li>
+                Click the "New Record" button. This will create a blank row for
+                you to fill in.
+              </li>
+              <img
+                class="screenshot"
+                src="screenshots/create-new-record.png"
+                alt="Create a new record"
+              />
+              <li>
+                Enter the book's information:
+                <ul>
+                  <li>
+                    You can skip the "id" field, as it's set to auto-increment.
+                  </li>
+                  <li>
+                    Enter the title, author, and genre of the book. For example:
+                    <ul>
+                      <li>
+                        <b>Title:</b> The Thrilling Adventures of Lovelace and
+                        Babbage
+                      </li>
+                      <li><b>Author:</b> Sydney Padua</li>
+                      <li><b>Genre:</b> Graphic Novel</li>
+                    </ul>
+                  </li>
+                </ul>
+                <img
+                  class="screenshot"
+                  src="screenshots/example-record.png"
+                  alt="Example record"
+                />
+              </li>
+              <li>Click "Write Changes" to save the new record.</li>
+            </ol>
+          </div>
+          <!--- end task-box-->
+          <p>
+            You've just added your first record to the database, akin to placing
+            a carefully chosen book onto your shelf.
+          </p>
+          <p>
+            Solidify your understanding by adding ten more books to your "books"
+            table using the straightforward interface of DB Browser. Select
+            titles from your own collection or those you aspire to read, and
+            observe how easily you can manage your data without writing any
+            code. This modest practice will prepare you for further exploration
+            of CRUD operations.
+          </p>
+
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Expand Your Library
+            </h5>
+            <p>
+              Add 10 more books to the database. Alternatively, open the
+              'bookshelf.db' found in the resources folder if you want to cheat.
+            </p>
+          </div>
+
+          <h5 class="card-title">Reading Records</h5>
+          <p>
+            Having diligently populated your database, it's time to delve into
+            the art of retrieval. In the hushed confines of our library analogy,
+            this equates to selecting a book from its designated shelf and
+            perusing its contents. Within DB Browser, this translates to viewing
+            and filtering your data with quiet efficiency.
+          </p>
+
+          <h5 class="card-title">Viewing Data in DB Browser</h5>
+          <p>
+            DB Browser offers a straightforward way to view your data without
+            the need for complex commands. To view the contents of your "books"
+            table:
+          </p>
+
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: View the "books" Table
+            </h5>
+            <ol>
+              <li>Navigate to the "Browse Data" tab.</li>
+              <li>Select the "books" table from the list.</li>
+            </ol>
+            <img
+              class="screenshot"
+              src="screenshots/browse.png"
+              alt="Browse the books table"
+            />
+            To see the same view as the above screenshot, load the
+            'bookshelf.db' from the lesson resource folder.
+          </div>
+
+          <p>
+            The table's contents will be displayed, revealing the fruits of your
+            earlier labours. Each row represents a book, and each column
+            displays a specific attribute. Observe the unassuming orderliness
+            with which your data is presented.
+          </p>
+
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" />Filtering Data in DB
+              Browser
+            </h5>
+            <p>
+              DB Browser also allows you to
+              <span class="redacted">filter</span> your data, akin to searching
+              for a specific book on your shelf. To filter your data, you can
+              use the search bar at the top of the
+              <span class="redacted">table view</span>. For instance, to find
+              all books with "the" in the title, simply type "the" into the
+              search bar. DB Browser will quietly update the display, showing
+              only the matching <span class="redacted">records</span>.
+            </p>
+
+            <p>
+              While this graphical approach offers a certain ease, there lies a
+              more powerful method for retrieving data:
+              <span class="redacted">SQL commands</span>. These commands provide
+              a precise and flexible way to
+              <span class="redacted">query</span> your database, allowing you to
+              retrieve specific information with surgical precision. We shall
+              explore this intriguing avenue in due course.
+            </p>
+          </div>
+          <p>
+            For now, familiarise yourself with the subdued elegance of DB
+            Browser's graphical interface.
+          </p>
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Filter the Book List
+            </h5>
+            Use the search bar to filter the book list for:
+            <ul>
+              <li>Titles containing the word "Ada"</li>
+              <img
+                class="screenshot"
+                src="screenshots/filter-ada.png"
+                alt="Filter by title containing Ada"
+              />
+              <li>Genres containing the word "biography"</li>
+              <img
+                class="screenshot"
+                src="screenshots/filter-bio.png"
+                alt="Filter by genre containing biography"
+              />
+            </ul>
+          </div>
+          <!--- end task-box-->
+
+          <h5 class="card-title">Updating Records</h5>
+          <p>
+            Even in our meticulously organised collections, change is
+            inevitable. In our library analogy, this might involve correcting a
+            book's details, such as its author or genre. DB Browser allows us to
+            modify existing records with ease.
+          </p>
+
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Update a Book Record
+            </h5>
+            To modify a record in your "books" table:
+
+            <ol>
+              <li>Go to the "Browse Data" tab.</li>
+              <li>Select the "books" table.</li>
+              <li>
+                Locate the record and double-click the cell you wish to change.
+              </li>
+              <li>Make the necessary adjustments.</li>
+              <li>Click "Write Changes" to save your changes.</li>
+            </ol>
+            <img
+              class="screenshot"
+              src="screenshots/update.png"
+              alt="Update a record"
+            />
+            In this example, I've updated the genre the book to "Computer
+            Science" instead of "Media Studies"
+          </div>
+
+          <p>DB Browser facilitates these alterations with quiet efficiency.</p>
+
+          <h5 class="card-title">Deleting Records</h5>
+          <p>
+            Occasionally, the need arises to remove items from our carefully
+            curated collections. In our library analogy, this might involve
+            discarding a worn-out volume or removing a title that no longer
+            aligns with our interests. DB Browser provides a straightforward
+            means to delete records from your database.
+          </p>
+
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/book.svg" /> Task: Delete a Book Record
+            </h5>
+            <ol>
+              <li>Go to the "Browse Data" tab.</li>
+              <li>Select the "books" table.</li>
+              <li>
+                Locate the record you wish to remove and click on the row number
+                to select it.
+              </li>
+              <li>Click the "Delete Record" button.</li>
+              <li>Confirm the deletion.</li>
+            </ol>
+            <img
+              class="screenshot"
+              src="screenshots/delete.png"
+              alt="Delete a record"
+            />
+          </div>
+
+          <p>
+            DB Browser executes this task with its characteristic quiet
+            efficiency, leaving no trace of the departed record.
+          </p>
+          <!--- end CRUD Operations -->
+
+          <h2 class="card-title">Lesson Summary</h2>
+          <p>
+            In this lesson, we've embarked on our journey into the world of
+            SQLite and DB Browser. We've learned how to create a new database,
+            define tables, and interact with our data using CRUD operations.
+          </p>
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" />Venturing Beyond the
+              Graphical Interface
+            </h5>
+            <p>
+              Having explored the subdued comforts of DB Browser's graphical
+              interface, it's time to consider the broader landscape of
+              <span class="redacted">SQLite</span> interaction. While DB Browser
+              provides an approachable
+              <span class="redacted">entry point</span>, the true power of
+              SQLite lies in its
+              <span class="redacted">command-line interface</span> and its
+              ability to integrate with
+              <span class="redacted">programming languages</span> like
+              <span class="redacted">Python</span>.
+            </p>
+
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> The Command-Line
+              Interface and SQL
+            </h5>
+            <p>
+              Beneath the unassuming exterior of DB Browser lies the
+              <span class="redacted">command-line</span> interface, where you
+              can interact with SQLite using
+              <span class="redacted">SQL commands</span>. These commands offer a
+              precise and flexible way to
+              <span class="redacted">manipulate</span> your database, allowing
+              for more complex operations and
+              <span class="redacted">fine-grained</span>
+              control over your data. For instance, you can use SQL commands to:
+            </p>
+
+            <ul>
+              <li>Retrieve specific records based on complex criteria.</li>
+              <li>
+                Perform <span class="redacted">calculations</span> on your data.
+              </li>
+              <li>
+                Modify multiple records with a single
+                <span class="redacted">command</span>.
+              </li>
+              <li>And much more.</li>
+            </ul>
+
+            <p>
+              While the command-line interface may seem
+              <span class="redacted">austere</span> at first glance, it offers a
+              deeper level of engagement with SQLite, allowing you to harness
+              its full potential.
+            </p>
+          </div>
+
+          <p>
+            <a href="../lesson-2" class="btn btn-dark-blue">
+              Onwards To Lesson 2</a
+            >
+          </p>
+        </div>
+        <!--- end card-body-->
+      </div>
+      <!--- end card-->
+    </div>
+  </body>
+</html>

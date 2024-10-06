@@ -2,6 +2,7 @@ body {
   background-color: #282c34;
   color: white;
   font-family: "Sono", sans-serif;
+  font-size: 1rem;
 }
 
 li {
@@ -15,11 +16,12 @@ p {
 .card {
   margin-bottom: 20px;
 }
+
 .btn-dark-blue {
   background-color: #0056b3;
   border-color: #0056b3;
   color: white;
-  width: 50%;
+  width: 30%;
   margin: 0 auto;
 }
 .btn-dark-blue:hover {
@@ -29,7 +31,7 @@ p {
 }
 
 .container {
-  width: 90%; /* Default: Mobile (small screens) */
+  width: 100%; /* Default: Mobile (small screens) */
   margin: 0 auto;
 }
 
