@@ -35,16 +35,16 @@
 
           <ol>
             <li>
+              <b>A New Database - <i>entertainment.db</i>:</b> A more
+              comprehensive dataset for practicing SQL queries.
+            </li>
+            <li>
               <b>The "Execute SQL" Tab:</b> Where you'll write and execute SQL
               commands.
             </li>
             <li>
               <b>SELECT, FROM, WHERE:</b> The essential clauses for retrieving
               specific data.
-            </li>
-            <li>
-              <b>A New Database: entertainment.db:</b> A more comprehensive
-              dataset for practicing SQL queries.
             </li>
             <li>
               <b>Experimenting with SQL Commands:</b> Hands-on practice with
@@ -66,20 +66,279 @@
               cumbersome or impossible with the graphical
               <span class="redacted">interface</span> alone.
             </p>
-
-            
           </div>
-          <p>For this lesson, we'll be working with a new database called "entertainment.db". This database contains information about movies and television shows.  To proceed, please open this database in DB Browser.</p>
-            
+          <h2 class="card-title">A New Database</h2>
+          <p>
+            For this lesson, we'll be working with a new database called
+            "entertainment.db". This database contains information about popular
+            80s movies and top selling music albums. To proceed, please open
+            this database in DB Browser.
+          </p>
+
           <div class="task-box">
             <h5 class="card-title">
-              <img src="../images/task-list.svg" /> Task: Open the "entertainment.db" Database
+              <img src="../images/task-list.svg" /> Task: Open the
+              "entertainment.db" Database
             </h5>
             <ol>
               <li>Go to "File" -> "Open Database".</li>
-              <li>Locate the "entertainment.db" file and click "Open".</li>
+              <li>
+                Locate the "entertainment.db" file and click "Open".
+                <p>
+                  You should now see the "entertainment.db" database loaded in
+                  DB Browser, with the "movies_80s" and "top_albums" tables
+                  listed in the "Database Structure" tab.
+                </p>
+                <img
+                  class="screenshot"
+                  src="screenshots/entertainment-structure.png"
+                  alt="database structure"
+                />
+              </li>
+              <li>
+                Take a moment to browse the data, play with filters and get a
+                sense of the size of the data set.
+              </li>
             </ol>
-            <p>You should now see the "entertainment.db" database loaded in DB Browser, with the "movies" and "television" tables listed in the "Database Structure" tab.</p>
+          </div>
+          <h5 class="card-title">Exploring the "entertainment.db" Dataset</h5>
+          <p>
+            The "entertainment.db" database offers a somewhat limited but
+            nonetheless potentially interesting repository of information for
+            practising your SQL querying skills. It houses two tables, each with
+            a distinct set of attributes:
+          </p>
+
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> Structure of
+              entertainment.db
+            </h5>
+            <p class="concept"></p>
+            <ul>
+              <li>
+                <b>"movies_80s"</b>: A
+                <span class="redacted">collection</span> of films from the
+                1980s, meticulously ranked from 1 to 10 based on
+                <span class="redacted">ticket sales</span> for each year. It
+                includes details such as title, release date, distributor, and
+                genre. One could, for example, query this table to uncover the
+                most <span class="redacted">popular</span> genres of the decade
+                or to track the performance of a particular
+                <span class="redacted">distributor</span> over time.
+              </li>
+              <li>
+                <b>"top_albums"</b>: A compilation of Rolling Stone magazine's
+                top 500 albums of all time, as judged in 2012. Or at least, most
+                of them. A few entries have been
+                <span class="redacted">discreetly removed</span> to ensure this
+                tutorial remains suitable for younger audiences, so you may find
+                some unexpected gaps in the rankings. The table provides
+                information on the ranking, year of release, album title,
+                artist, genre, and subgenre. One might, with sufficient effort,
+                use SQL to identify trends in musical taste across different
+                <span class="redacted">eras</span> or to
+                <span class="redacted">analyse</span> the representation of
+                various genres within the list.
+              </li>
+            </ul>
+          </div>
+
+          <p>
+            With these datasets at your disposal, the possibilities for
+            exploration are perhaps not endless, but certainly sufficient for
+            our current purposes. But how does one access and analyse this
+            information? The "Execute SQL" tab provides the means.
+          </p>
+
+          <h2 class="card-title">The "Execute SQL" Tab</h2>
+          <p>
+            The "Execute SQL" tab in DB Browser is your interface for
+            interacting with these datasets using SQL commands. Here, you can
+            construct queries to retrieve specific data, filter records based on
+            certain criteria, and perform basic calculations.
+          </p>
+
+          <p>
+            To access this tab, simply click on "Execute SQL" in DB Browser.
+            You'll be presented with a text editor for composing your SQL
+            queries and a button to execute them. The results will be displayed
+            below, offering a glimpse into the patterns and trends hidden within
+            the data.
+          </p>
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Execute an SQL Query
+              to Retrieve Top-Ranked Movies
+            </h5>
+            <ol>
+              <li>Open the "Execute SQL" tab in DB Browser.</li>
+              <li>
+                Type the following SQL query into the query editor:
+                <pre><code>SELECT title, release_date FROM movies_80s WHERE rank = 1</code></pre>
+              </li>
+              <li>
+                Press the "Execute" button (looks like the play icon)
+                <p>
+                  The query result should display the title of the top-ranked
+                  movie in the "movies_80s" table from each year, as shown
+                  below:
+                </p>
+                <img
+                  class="screenshot"
+                  src="screenshots/top-films.png"
+                  alt="Top films"
+                />
+              </li>
+              <li>
+                Try changing the ranking to a higher number. Do you still
+                recognise the film?
+              </li>
+            </ol>
+          </div>
+
+          <p>
+            In the following sections, we'll examine the fundamental SQL clauses
+            that will enable you to navigate and analyse these datasets with a
+            modicum of confidence.
+          </p>
+
+          <h2 class="card-title">SELECT, FROM, WHERE</h2>
+          <p>
+            The SELECT, FROM, and WHERE clauses are the building blocks of SQL
+            queries. They allow you to specify what data you want to retrieve
+            and under what conditions. Let's break down each clause:
+          </p>
+
+          <ul>
+            <li>
+              <b>SELECT:</b> Specifies the columns you want to retrieve from the
+              database.
+            </li>
+            <li>
+              <b>FROM:</b> Specifies the table from which you want to retrieve
+              the data.
+            </li>
+            <li>
+              <b>WHERE:</b> Filters the records based on specific conditions.
+            </li>
+          </ul>
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> The WHERE Clause: Your
+              Data Detective
+            </h5>
+            <p class="concept">
+              In the world of SQL, the <code>WHERE</code> clause acts like a
+              detective, helping you pinpoint exactly the information you need
+              from your database. Think of it as a filter that sifts through
+              your data and only reveals the records that match your specific
+              criteria.
+            </p>
+
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> WHERE in Action:
+              "80s_movies"
+            </h5>
+            <p class="concept">
+              Let's say you want to find all the movies in your "<span
+                class="redacted"
+                >movies_80s</span
+              >" table that were <span class="redacted">distributed</span> by
+              Warner Bros. You would use the WHERE
+              <span class="redacted">clause</span> with a condition
+            </p>
+
+            <pre><code>SELECT * FROM movies_80s WHERE <span class="redacted">distributor = 'Warner Bros'</span></code></pre>
+
+            <p class="concept">
+              This query tells the database: "Show me all the columns
+              <span class="redacted">(*)</span> from the 'movies_80s' table, but
+              only where the 'distributor' field is equal to 'Warner Bros.'"
+            </p>
+
+            <h5 class="card-title">WHERE's Versatility</h5>
+            <p class="concept">
+              The WHERE clause is incredibly versatile. You can use it with
+              various operators to create different conditions:
+            </p>
+            <div class="concept">
+              <ul>
+                <li>=: <span class="redacted">Equal to</span></li>
+                <li>
+                  != or &lt;&gt;: <span class="redacted">Not equal to</span>
+                </li>
+                <li>&lt;: <span class="redacted">Less than</span></li>
+                <li>&gt;: <span class="redacted">Greater than</span></li>
+                <li>
+                  &lt;=: Less than
+                  <span class="redacted">or</span> equal to
+                </li>
+                <li>
+                  &gt;=: Greater than <span class="redacted">or</span> equal to
+                </li>
+                <li>
+                  LIKE: Matches a <span class="redacted">pattern</span> (e.g.,
+                  '1985%')
+                </li>
+                <li>
+                  BETWEEN: Within a <span class="redacted">range</span> of
+                  values
+                </li>
+                <li>
+                  IN: Matches <span class="redacted">any</span> value in a list
+                </li>
+              </ul>
+            </div>
+
+            <p class="concept">
+              You can even combine multiple conditions using <code>AND</code>,
+              <code>OR</code>, and <code>NOT</code> to create more complex
+              filters.
+            </p>
+          </div>
+          <p>
+            By combining these clauses, you can craft queries that extract
+            precisely the information you need. Let's put this into practice
+            with a few examples.
+          </p>
+
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Practice with SELECT,
+              FROM, WHERE
+            </h5>
+            <ol>
+              <li>Open the "Execute SQL" tab in DB Browser.</li>
+              <li>
+                Try the following queries to retrieve specific data from the
+                "movies_80s" table:
+                <ul>
+                  <li>
+                    Retrieve the title and genre of all movies released in 1985.
+                  </li>
+                  <li>
+                    Retrieve the title and distributor of movies with a rank
+                    greater than 5.
+                  </li>
+                  <li>
+                    Retrieve the title and release date of movies with the genre
+                    "Comedy".
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Experiment with different combinations of SELECT, FROM, and
+                WHERE to explore the dataset further.
+              </li>
+            </ol>
+
+            <p>
+              As you practice with these queries, you'll gain a deeper
+              understanding of how to extract meaningful insights from the
+              dataset. Feel free to experiment and explore the data to your
+              heart's content!
+            </p>
           </div>
         </div>
         <!-- end card-body -->
