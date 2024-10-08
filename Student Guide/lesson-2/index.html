@@ -305,50 +305,148 @@
 
           <div class="task-box">
             <h5 class="card-title">
-              <img src="../images/task-list.svg" /> Task: Practice with SELECT, FROM, WHERE
+              <img src="../images/task-list.svg" /> Task: Guided Practice with
+              SELECT, FROM, WHERE
             </h5>
-            Try the following queries to retrieve specific data from the "movies_80s" table:
-           
-                
-                <ol>
-                  <li>Retrieve the title and genre of all movies released in 1985.
-                    <pre><code><span class="cover">SELECT title, genre FROM movies_80s WHERE release_date = 1985</span></code></pre>
-                  </li>
-                  <li>Retrieve the title and distributor of movies with a rank greater than 5.
-                    <pre><code><span class="cover">SELECT title, distributor FROM movies_80s WHERE rank > 5</span></code></pre>
-                  </li>
-                  <li>Retrieve the title and release date of movies with the genre "Comedy".
-                    <pre><code><span class="cover">SELECT title, release_date FROM movies_80s WHERE genre = 'Comedy'</span></span></code></pre>
-                  </li>
-                  <li>Retrieve the title and tickets sold of movies with the distributor "Warner Bros."
-                    <pre><code><span class="cover">SELECT title, tickets_sold FROM movies_80s WHERE distributor = 'Warner Bros.'</span></code></pre>
-                  </li>
-                  <li>Retrieve the title and rank of movies with the genre "Action" and a rank less than or equal to 3.
-                    <pre><code><span class="cover">SELECT title, rank FROM movies_80s WHERE genre = 'Action' AND rank &lt;= 3</span></code></pre>
-                  </li>
-                  <li>Retrieve the title and release date of movies with a release date between 1983 and 1986.
-                    <pre><code><span class="cover">SELECT title, release_date FROM movies_80s WHERE release_date BETWEEN 1983 AND 1986</span></span></code></pre>
-                  </li>
-                  <li>Retrieve the title and distributor of movies with the distributor "Universal" or "Columbia".
-                    <pre><code><span class="cover">SELECT title, distributor FROM movies_80s WHERE distributor = 'Universal' OR distributor = 'Columbia'</span></code></pre>
-                  </li>
-                  <li>Retrieve the title and genre of movies with a genre in ("Comedy", "Adventure", "Action").
-                    <pre><code><span class="cover">SELECT title, genre FROM movies_80s WHERE genre IN ('Comedy', 'Adventure', 'Action')</span></code></pre>
-                  </li>
-                  <li>Retrieve the title and tickets sold of movies with a rank between 3 and 6, and a release date after 1984.
-                    <pre><code><span class="cover">SELECT title, tickets_sold FROM movies_80s WHERE rank BETWEEN 3 AND 6 AND release_date > 1984</span></code></pre>
-                  </li>
-                  <li>Retrieve the title and distributor of movies with a genre not in ("Comedy", "Adventure"), a rank less than 5, and tickets sold greater than 20,000,000.
-                    <pre><code><span class="cover">SELECT title, distributor FROM movies_80s WHERE genre NOT IN ('Comedy', 'Adventure') AND rank &lt; 5 AND tickets_sold > 20000000</span></code></pre>
-                  </li>
-             
+            Try the following queries to retrieve specific data from the
+            "movies_80s" table. Try this by yourself, but if you get stuck, you
+            can check the solution below each question or better still take a
+            "look", "cover", <s>"write"</s>, "query", "check" approach.
+
+            <ol>
               <li>
-                Experiment with different combinations of SELECT, FROM, and WHERE to explore the dataset further.
+                Retrieve the title and genre of all movies released in 1985.
+                <pre><code><span class="cover">SELECT title, genre FROM movies_80s WHERE release_date = 1985</span></code></pre>
+              </li>
+              <li>
+                Retrieve the title and distributor of movies with a rank greater
+                than 5.
+                <pre><code><span class="cover">SELECT title, distributor FROM movies_80s WHERE rank > 5</span></code></pre>
+              </li>
+              <li>
+                Retrieve the title and release date of movies with the genre
+                "Comedy".
+                <pre><code><span class="cover">SELECT title, release_date FROM movies_80s WHERE genre = 'Comedy'</span></code></pre>
+              </li>
+              <li>
+                Retrieve the title and tickets sold of movies with the
+                distributor "Warner Bros."
+                <pre><code><span class="cover">SELECT title, tickets_sold FROM movies_80s WHERE distributor = 'Warner Bros.'</span></code></pre>
+              </li>
+              <li>
+                Retrieve the title and rank of movies with the genre "Action"
+                and a rank less than or equal to 3.
+                <pre><code><span class="cover">SELECT title, rank FROM movies_80s WHERE genre = 'Action' AND rank &lt;= 3</span></code></pre>
+              </li>
+              <li>
+                Retrieve the title and release date of movies with a release
+                date between 1983 and 1986.
+                <pre><code><span class="cover">SELECT title, release_date FROM movies_80s WHERE release_date BETWEEN 1983 AND 1986</span></code></pre>
+              </li>
+              <li>
+                Retrieve the title and distributor of movies with the
+                distributor "Universal" or "Columbia".
+                <pre><code><span class="cover">SELECT title, distributor FROM movies_80s WHERE distributor = 'Universal' OR distributor = 'Columbia'</span></code></pre>
+              </li>
+              <li>
+                Retrieve the title and genre of movies with a genre in
+                ("Comedy", "Adventure", "Action").
+                <pre><code><span class="cover">SELECT title, genre FROM movies_80s WHERE genre IN ('Comedy', 'Adventure', 'Action')</span></code></pre>
+              </li>
+              <li>
+                Retrieve the title and tickets sold of movies with a rank
+                between 3 and 6, and a release date after 1984.
+                <pre><code><span class="cover">SELECT title, tickets_sold FROM movies_80s WHERE rank BETWEEN 3 AND 6 AND release_date > 1984</span></code></pre>
+              </li>
+              <li>
+                Retrieve the title and distributor of movies with a genre not in
+                ("Comedy", "Adventure"), a rank less than 5, and tickets sold
+                greater than 20,000,000.
+                <pre><code><span class="cover">SELECT title, distributor FROM movies_80s WHERE genre NOT IN ('Comedy', 'Adventure') AND rank &lt; 5 AND tickets_sold > 20000000</span></code></pre>
+              </li>
+
+              <li>
+                Experiment with different combinations of SELECT, FROM, and
+                WHERE to explore the dataset further.
               </li>
             </ol>
-          
+          </div>
+
+          <p>
+            As you practice with these queries, you'll gain a deeper
+            understanding of how to extract meaningful insights from the
+            dataset. Feel free to experiment and explore the data to your
+            heart's content!
+          </p>
+
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> Using !=, &lt;>, and NOT
+            </h5>
             <p>
-              As you practice with these queries, you'll gain a deeper understanding of how to extract meaningful insights from the dataset. Feel free to experiment and explore the data to your heart's content!
+              In SQL, you can use != or &lt;> to express
+              <span class="redacted">"not equal to"</span>. Both operators
+              achieve the same result. For instance, to retrieve all movies NOT
+              released in 1985, you could use either of the following queries:
+            </p>
+
+            <pre><code>SELECT * FROM movies_80s WHERE release_date != 1985</code></pre>
+            <pre><code>SELECT * FROM movies_80s WHERE release_date &lt;> 1985</code></pre>
+
+            <p>
+              The keyword NOT is used in different
+              <span class="redacted">contexts</span>, such as with the IN and
+              BETWEEN operators. For example, to retrieve movies with a genre
+              <span class="redacted">NOT IN</span> ('Comedy', 'Adventure'), you
+              would use:
+            </p>
+
+            <pre><code>SELECT * FROM movies_80s WHERE genre <span class="redacted">NOT IN</span> ('Comedy', 'Adventure');</code></pre>
+          </div>
+          <p>
+            Now, let's turn our attention to the "top_albums" table. This table
+            presents a curated selection of influential music albums, spanning
+            various genres and eras.
+          </p>
+
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Independent Practice -
+              Explore "top_albums"
+            </h5>
+            <p>
+              Using your newfound SQL querying skills, try to answer the
+              following questions:
+            </p>
+            <ol>
+              <li>Which albums from the 1970s have "Rock" as their genre?</li>
+              <li>
+                What are the titles and artists of the top 10 ranked albums?
+              </li>
+              <li>Which albums are classified as "Funk / Soul"?</li>
+              <li>Find all albums with "Blues" in their subgenre.</li>
+              <li>
+                Which albums were released between 1965 and 1975, and have
+                "Rock" in their genre?
+              </li>
+              <li>Find all albums by The Beatles or The Rolling Stones.</li>
+              <li>
+                Which albums have a subgenre of "Folk Rock" or "Pop Rock"?
+              </li>
+              <li>Find all albums that are NOT "Rock" genre.</li>
+              <li>
+                Which albums ranked between 20 and 50 have "Pop" in their
+                subgenre?
+              </li>
+              <li>
+                Find all albums with "Alternative" in their subgenre that were
+                NOT released in the 1990s.
+              </li>
+            </ol>
+            <p>
+              Remember to utilise the SELECT, FROM, and WHERE clauses, along
+              with the operators we've covered (such as =, >, &lt;, BETWEEN, IN,
+              NOT IN, LIKE, etc.) to construct your queries.
             </p>
           </div>
         </div>
