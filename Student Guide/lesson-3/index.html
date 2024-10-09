@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning SQL with Python</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sono:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <script src="../scripts/script.js" defer></script>
+  </head>
+
+<body>
+    <a href="../index.html">
+      <img id="fixed-icon" src="../images/home.svg" alt="Open book" />
+    </a>
+    <div class="container">
+      <h1 class="display-8 text-center mt-5 mb-4">
+        Lesson 3 - Python and SQLite: A Pragmatic Pairing
+      </h1>
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Lesson Overview</h2>
+          <p>In this lesson, we'll step away from the graphical comforts of DB Browser and explore the more practical world of interacting with SQLite databases through Python scripts.  We'll cover:</p>
+  
+          <ol>
+            <li><b>Why Python?</b> Understanding the benefits of using Python with SQLite.</li>
+            <li><b>Setting Up:</b>  Preparing your Python environment for database interaction.</li>
+            <li><b>Basic Queries:</b> Executing simple SQL queries from a Python script.</li>
+            <li><b>Dynamic Queries:</b>  Taking user input to generate dynamic queries.</li>
+          </ol>
+  
+          <h2 class="card-title">Why Python?</h2>
+          <p>While tools like DB Browser offer a convenient way to explore and manipulate SQLite databases, most real-world applications don't involve direct user interaction with the database. Instead, databases are often accessed and managed through programming languages like Python.</p>
+  
+          <p>Python, with its clear syntax and extensive libraries, provides an ideal environment for working with SQLite. It allows you to:</p>
+          <ul>
+            <li>Embed SQL queries within your Python code.</li>
+            <li>Process and manipulate data retrieved from the database.</li>
+            <li>Build applications that interact with SQLite databases seamlessly.</li>
+            <li>Automate database tasks without manual intervention.</li>
+          </ul>
+  
+          <p>By combining the efficiency of SQLite with the versatility of Python, you can create applications that are both powerful and pragmatic.</p>
+  
+          <h2 class="card-title">Setting Up Your Environment</h2>
+          <p>Before we embark on our Python-SQLite journey, we need to ensure our environment is properly equipped. This involves installing the necessary library and importing it into your script.</p>
+  
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Install the SQLite Library
+            </h5>
+            <p>Python comes with a built-in library for interacting with SQLite databases. To install it, open your terminal or command prompt and run the following command:</p>
+            <pre><code>pip install pysqlite3</code></pre>
+            <p>This will install the <code>sqlite3</code> library, enabling you to connect to and manipulate SQLite databases from your Python scripts.</p>
+          </div>
+  
+          <h2 class="card-title">Executing Basic Queries</h2>
+          <p>With our environment set up, we can now start executing SQL queries from our Python script. Let's begin with a simple example, retrieving all records from the "car_inventory" table in the "car_inventory.db" database.</p>
+  
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Retrieve All Cars
+            </h5>
+            <p>Create a Python script and add the following code:</p>
+            <pre><code>import sqlite3
+  
+  conn = sqlite3.connect('car_inventory.db')
+  cursor = conn.cursor()
+  
+  cursor.execute("SELECT * FROM car_inventory;")
+  results = cursor.fetchall()
+  
+  for row in results:
+      print(row)
+  
+  conn.close()</code></pre>
+            <p>This script connects to the "car_inventory.db" database, retrieves all records from the "car_inventory" table, and prints them to the console.</p>
+          </div>
+  
+          <h2 class="card-title">Constructing Dynamic Queries</h2>
+          <p>While executing hardcoded SQL queries can be useful, the true power of using Python with SQLite lies in the ability to construct dynamic queries based on user input or other variables. Let's create a script that takes user input for car colour and make, and then retrieves matching cars from the database.</p>
+  
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Find Cars by Colour and Make
+            </h5>
+            <p>Modify your Python script as follows:</p>
+            <pre><code>import sqlite3
+  
+  conn = sqlite3.connect('car_inventory.db')
+  cursor = conn.cursor()
+  
+  colour = input("Enter car colour: ")
+  make = input("Enter car make: ")
+  
+  cursor.execute("SELECT * FROM car_inventory WHERE colour = ? AND make = ?;", (colour, make))
+  results = cursor.fetchall()
+  
+  for row in results:
+      print(row)
+  
+  conn.close()</code></pre>
+            <p>This script prompts the user for car colour and make, constructs a SQL query with these inputs, and prints the matching cars. Notice the use of <code>?</code> placeholders in the query to prevent SQL injection vulnerabilities.</p>
+          </div>
+  
+          <h2 class="card-title">Lesson Summary</h2>
+          <p>In this lesson, we've ventured beyond the graphical interface and explored the practical realm of interacting with SQLite databases through Python scripts. We've learned how to set up our environment, execute basic SQL queries, and construct dynamic queries based on user input. While the intricacies of database programming remain vast, we've gained a solid foundation for further exploration and a sense of quiet confidence in our ability to harness the combined power of Python and SQLite.</p>
+  
+          <p>
+            <a href="../lesson-4" class="btn btn-dark-blue">
+              Onwards To Lesson 4
+            </a>
+          </p>
+        </div>
+        </div>
+      </div>
+    </body>
+  </html>
