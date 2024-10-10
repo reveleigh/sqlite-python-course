@@ -30,18 +30,21 @@
           description:
             "Exploring how to use DB Browser's Graphical interface to Create, Read, Update and Delete database records.",
           link: "lesson-1",
+          image: "images/bookshelf.jpg",
         },
         {
           title: "Lesson 2 - Executing SQL Commands in DB Browser",
           description:
             "Using SELECT, WHERE, FROM to  investigate a database of 80s movies and Rolling Stone Magazine's top 500 albums",
           link: "lesson-2",
+          image: "images/music.jpg",
         },
         {
           title: "Lesson 3 - Executing SQL Commands With Python",
           description:
             "Using SELECT, WHERE, FROM in Python to make basic queries, then dynamically by taking user input.",
           link: "lesson-3",
+          image: "images/cars.jpg",
         },
         {
           title: "Lesson 4",
@@ -63,12 +66,19 @@
         const cardHtml = `
     
         <div class="card">
-            <div class="card-body">
-                <h5 class="card-title"><img src="images/book.svg" />${lesson.title}</h5>
-                <p class="card-text">${lesson.description}</p>
-                <a href="${lesson.link}" class="btn btn-dark-blue">Start</a>
-            </div>
-        </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-4 col-md-12"> 
+        <img src="${lesson.image}" class="card-img-top img-fluid" alt="${lesson.title} image" />
+      </div>
+      <div class="col-lg-8 col-md-12">
+        <h5 class="card-title lesson-title">${lesson.title}</h5>
+        <p class="card-text lesson-description">${lesson.description}</p>
+        <a href="${lesson.link}" class="btn btn-dark-blue">Start</a>
+      </div>
+    </div>
+  </div>
+</div>
     
 `;
         lessonCardsContainer.innerHTML += cardHtml;

@@ -121,3 +121,14 @@ pre code {
   float: left;
   margin-right: 10px;
 }
+
+.lesson-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.lesson-description {
+  font-size: 1.2rem;
+  margin: 20px 0;
+}

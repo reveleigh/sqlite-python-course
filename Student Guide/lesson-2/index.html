@@ -51,6 +51,13 @@
               SELECT, FROM, WHERE.
             </li>
           </ol>
+          <p>
+            <img
+              class="screenshot"
+              src="../images/music.jpg"
+              alt="Eighties music and films"
+            />
+          </p>
 
           <div class="concept-box">
             <h5 class="card-title">
@@ -305,8 +312,8 @@
 
           <div class="task-box">
             <h5 class="card-title">
-              <img src="../images/task-list.svg" /> Task: Practice with
-              SELECT, FROM, WHERE
+              <img src="../images/task-list.svg" /> Task: Practice with SELECT,
+              FROM, WHERE
             </h5>
             Try the following queries to retrieve specific data from the
             "movies_80s" table. Try these by yourself, but if you get stuck, you
@@ -381,117 +388,208 @@
 
           <div class="concept-box">
             <h5 class="card-title">
-              <img src="../images/bookmark-book.svg" /> Using !=, &lt;>, NOT, and Wildcards
+              <img src="../images/bookmark-book.svg" /> Using !=, &lt;>, NOT,
+              and Wildcards
             </h5>
             <p>
-              In SQL, you can use <code>!=</code> or <code>&lt;></code> to express <span class="redacted">"not equal to"</span>. Both operators achieve the same result. For instance, to retrieve all movies NOT released in 1985, you could use either of the following queries:
+              In SQL, you can use <code>!=</code> or <code>&lt;></code> to
+              express <span class="redacted">"not equal to"</span>. Both
+              operators achieve the same result. For instance, to retrieve all
+              movies NOT released in 1985, you could use either of the following
+              queries:
             </p>
-          
+
             <pre><code>SELECT * FROM movies_80s WHERE release_date != 1985;</code></pre>
             <pre><code>SELECT * FROM movies_80s WHERE release_date &lt;> 1985;</code></pre>
-          
+
             <p>
-              The keyword <code>NOT</code> is used in different <span class="redacted">contexts</span>, such as with the <code>IN</code> and <code>BETWEEN</code> operators. For example, to retrieve movies with a genre <span class="redacted">NOT IN</span> ('Comedy', 'Adventure'), you would use:
+              The keyword <code>NOT</code> is used in different
+              <span class="redacted">contexts</span>, such as with the
+              <code>IN</code> and <code>BETWEEN</code> operators. For example,
+              to retrieve movies with a genre
+              <span class="redacted">NOT IN</span> ('Comedy', 'Adventure'), you
+              would use:
             </p>
-          
+
             <pre><code>SELECT * FROM movies_80s WHERE genre NOT IN ('Comedy', 'Adventure');</code></pre>
-          
+
             <p>
-              To search for <span class="redacted">patterns</span> within text data, you can use <span class="redacted">wildcards</span> with <span class="redacted">LIKE Operator</span>. The most common wildcards are:
+              To search for <span class="redacted">patterns</span> within text
+              data, you can use <span class="redacted">wildcards</span> with
+              <span class="redacted">LIKE Operator</span>. The most common
+              wildcards are:
             </p>
             <ul>
-              <li><b>% (percent sign):</b> Represents zero or more characters. For example, <code>LIKE '%Rock%'</code> would match "Rock", "Rock and Roll", "Psychedelic Rock", and any other string containing "Rock".</li>
-              <li><b>_ (underscore):</b> Represents a single character. For example, <code>LIKE 'Bl_es'</code> would match "Blues" but not "Blues Rock".</li>
+              <li>
+                <b>% (percent sign):</b> Represents zero or more characters. For
+                example, <code>LIKE '%Rock%'</code> would match "Rock", "Rock
+                and Roll", "Psychedelic Rock", and any other string containing
+                "Rock".
+              </li>
+              <li>
+                <b>_ (underscore):</b> Represents a single character. For
+                example, <code>LIKE 'Bl_es'</code> would match "Blues" but not
+                "Blues Rock".
+              </li>
             </ul>
-            <p>For instance, to find all albums with "Rock" in their subgenre (remember that an album can have multiple <span class="redacted">subgenres</span>, separated by commas and a space), you would use:</p>
+            <p>
+              For instance, to find all albums with "Rock" in their subgenre
+              (remember that an album can have multiple
+              <span class="redacted">subgenres</span>, separated by commas and a
+              space), you would use:
+            </p>
             <pre><code>SELECT * FROM top_albums WHERE subgenre LIKE '%Rock%';</code></pre>
-            <img class="screenshot"src="screenshots/rock-subgenre.png" alt="Rock subgenre" />
-            <p>Or to find albums where the artist starts with "The" you would use:</p>
+            <img
+              class="screenshot"
+              src="screenshots/rock-subgenre.png"
+              alt="Rock subgenre"
+            />
+            <p>
+              Or to find albums where the artist starts with "The" you would
+              use:
+            </p>
             <pre><code>SELECT rank, year, album, artist FROM top_albums WHERE artist <span class="redacted">LIKE</span> 'The%';</code></pre>
-            <img class="screenshot" src="screenshots/artists-starting-with-the.png" alt="Artists starting with the" />
+            <img
+              class="screenshot"
+              src="screenshots/artists-starting-with-the.png"
+              alt="Artists starting with the"
+            />
           </div>
           <p>
-            The "top_albums" table presents a curated selection of influential music albums, spanning
-            various genres and eras. Using the SELECT, FROM, and WHERE clauses, you can craft queries to explore this dataset in greater detail.
+            The "top_albums" table presents a curated selection of influential
+            music albums, spanning various genres and eras. Using the SELECT,
+            FROM, and WHERE clauses, you can craft queries to explore this
+            dataset in greater detail.
           </p>
 
           <div class="task-box">
             <h5 class="card-title">
-              <img src="../images/task-list.svg" /> Task: Practice - Explore "top_albums"
+              <img src="../images/task-list.svg" /> Task: Practice - Explore
+              "top_albums"
             </h5>
-            <p>Using your newfound SQL querying skills, answer the following questions:
-              Remember to utilise the SELECT, FROM, and WHERE clauses, along with the operators we've covered (such as <code>=</code>, <code>></code>, <code>&lt;</code>, <code>BETWEEN</code>, <code>IN</code>, <code>NOT IN</code>, <code>LIKE</code>, etc.) to construct your queries.
-         Again, try these by yourself, but if you get stuck, you
-         can check the solution below each question or better still take a
-         "look", "cover", <s>"write"</s>, "query", "check" approach.
+            <p>
+              Using your newfound SQL querying skills, answer the following
+              questions: Remember to utilise the SELECT, FROM, and WHERE
+              clauses, along with the operators we've covered (such as
+              <code>=</code>, <code>></code>, <code>&lt;</code>,
+              <code>BETWEEN</code>, <code>IN</code>, <code>NOT IN</code>,
+              <code>LIKE</code>, etc.) to construct your queries. Again, try
+              these by yourself, but if you get stuck, you can check the
+              solution below each question or better still take a "look",
+              "cover", <s>"write"</s>, "query", "check" approach.
             </p>
             <ol>
-              <li>Which albums from the 1970s have "Rock" as their genre?
+              <li>
+                Which albums from the 1970s have "Rock" as their genre?
                 <pre><code><span class="cover">SELECT * FROM top_albums WHERE year BETWEEN 1970 AND 1979 AND genre = 'Rock'</span></code></pre>
               </li>
-              <li>What are the titles and artists of the top 10 ranked albums?
+              <li>
+                What are the titles and artists of the top 10 ranked albums?
                 <pre><code><span class="cover">SELECT album, artist FROM top_albums WHERE rank &lt;= 10</span></code></pre>
               </li>
-              <li>Which albums are classified as "Funk / Soul"?
+              <li>
+                Which albums are classified as "Funk / Soul"?
                 <pre><code><span class="cover">SELECT * FROM top_albums WHERE genre = 'Funk / Soul'</span></code></pre>
               </li>
-              <li>Find all albums with "Blues" in their subgenre.
+              <li>
+                Find all albums with "Blues" in their subgenre.
                 <pre><code><span class="cover">SELECT * FROM top_albums WHERE subgenre LIKE '%Blues%'</span></code></pre>
               </li>
-              <li>Which albums were released between 1965 and 1975, and have "Rock" in their genre?
+              <li>
+                Which albums were released between 1965 and 1975, and have
+                "Rock" in their genre?
                 <pre><code><span class="cover">SELECT * FROM top_albums WHERE year BETWEEN 1965 AND 1975 AND genre = 'Rock'</span></code></pre>
               </li>
-              <li>Find all albums by The Beatles or The Rolling Stones.
+              <li>
+                Find all albums by The Beatles or The Rolling Stones.
                 <pre><code><span class="cover">SELECT * FROM top_albums WHERE artist = 'The Beatles' OR artist = 'The Rolling Stones'</span></code></pre>
               </li>
-              <li>Which albums have a subgenre of "Folk Rock" or "Pop Rock"?
+              <li>
+                Which albums have a subgenre of "Folk Rock" or "Pop Rock"?
                 <pre><code><span class="cover">SELECT * FROM top_albums WHERE subgenre = 'Folk Rock' OR subgenre = 'Pop Rock'</span></code></pre>
               </li>
-              <li>Find all albums that are NOT "Rock" genre.
+              <li>
+                Find all albums that are NOT "Rock" genre.
                 <pre><code><span class="cover">SELECT * FROM top_albums WHERE genre != 'Rock'</span></code></pre>
               </li>
-              <li>Which albums ranked between 20 and 50 have "Pop" in their subgenre?
+              <li>
+                Which albums ranked between 20 and 50 have "Pop" in their
+                subgenre?
                 <pre><code><span class="cover">SELECT * FROM top_albums WHERE rank BETWEEN 20 AND 50 AND subgenre LIKE '%Pop%'</span></code></pre>
               </li>
-              <li>Find all albums with "Alternative" in their subgenre that were NOT released in the 1990s.
+              <li>
+                Find all albums with "Alternative" in their subgenre that were
+                NOT released in the 1990s.
                 <pre><code><span class="cover">SELECT * FROM top_albums WHERE subgenre LIKE '%Alternative%' AND NOT year BETWEEN 1990 AND 1999</span></code></pre>
               </li>
             </ol>
-            <p>Remember to utilise the SELECT, FROM, and WHERE clauses, along with the operators we've covered (such as <code>=</code>, <code>></code>, <code>&lt;</code>, <code>BETWEEN</code>, <code>IN</code>, <code>NOT IN</code>, <code>LIKE</code>, etc.) to construct your queries.</p>
+            <p>
+              Remember to utilise the SELECT, FROM, and WHERE clauses, along
+              with the operators we've covered (such as <code>=</code>,
+              <code>></code>, <code>&lt;</code>, <code>BETWEEN</code>,
+              <code>IN</code>, <code>NOT IN</code>, <code>LIKE</code>, etc.) to
+              construct your queries.
+            </p>
           </div>
-
 
           <h2 class="card-title">Lesson Summary</h2>
           <p>
-            In this lesson, we explored how to interact with SQLite databases using
-            SQL commands within DB Browser. We covered the "entertainment.db" dataset,
-            the "Execute SQL" tab, and the SELECT, FROM, and WHERE clauses. By
-            practicing with SQL queries, you've gained a foundational understanding
-            of how to retrieve specific data from a database and filter records based
-            on certain criteria.
+            In this lesson, we explored how to interact with SQLite databases
+            using SQL commands within DB Browser. We covered the
+            "entertainment.db" dataset, the "Execute SQL" tab, and the SELECT,
+            FROM, and WHERE clauses. By practicing with SQL queries, you've
+            gained a foundational understanding of how to retrieve specific data
+            from a database and filter records based on certain criteria.
           </p>
           <div class="concept-box">
             <h5 class="card-title">
-              <img src="../images/bookmark-book.svg" /> <span class="redacted">SQL</span> Formatting Conventions
+              <img src="../images/bookmark-book.svg" />
+              <span class="redacted">SQL</span> Formatting Conventions
             </h5>
-            <p>While <span class="redacted">SQL</span> doesn't enforce strict formatting rules, consistent <span class="redacted">conventions</span> improve readability.  Common practices include:</p>
+            <p>
+              While <span class="redacted">SQL</span> doesn't enforce strict
+              formatting rules, consistent
+              <span class="redacted">conventions</span> improve readability.
+              Common practices include:
+            </p>
             <ul>
-              <li><b><span class="redacted">Keywords</span> in uppercase:</b>  Write SQL keywords (SELECT, FROM, WHERE, etc.) in uppercase to distinguish them from other elements in your query.
+              <li>
+                <b><span class="redacted">Keywords</span> in uppercase:</b>
+                Write SQL keywords (SELECT, FROM, WHERE, etc.) in uppercase to
+                distinguish them from other elements in your query.
               </li>
-              <li><b>Table and column names in lowercase:</b>  Using lowercase for table and column names helps maintain consistency and differentiate them from keywords.
+              <li>
+                <b>Table and column names in lowercase:</b> Using lowercase for
+                table and column names helps maintain consistency and
+                differentiate them from keywords.
               </li>
-              <li><b>Indentation:</b>  Indenting clauses and expressions, especially in complex queries, makes the structure of your query clearer and easier to follow. For instance, indent the content of the WHERE clause in relation to the WHERE keyword itself, and indent any AND/OR operators with respect to the WHERE.
-              <pre><code>SELECT title, genre
+              <li>
+                <b>Indentation:</b> Indenting clauses and expressions,
+                especially in complex queries, makes the structure of your query
+                clearer and easier to follow. For instance, indent the content
+                of the WHERE clause in relation to the WHERE keyword itself, and
+                indent any AND/OR operators with respect to the WHERE.
+                <pre><code>SELECT title, genre
           FROM movies_80s
           WHERE genre = 'Comedy';</code></pre>
               </li>
-              <li><b>Newlines:</b>  Using newlines to separate different parts of your query can also improve readability.  For instance, you can place each clause (SELECT, FROM, WHERE) on a new line.  For longer queries, consider placing each column in the SELECT statement on a new line.  It ultimately doesn't matter if you choose to write your query on a single line or multiple lines, as long as it is readable.
-              <pre><code>SELECT title, genre FROM movies_80s WHERE genre = 'Comedy';</code></pre>
+              <li>
+                <b>Newlines:</b> Using newlines to separate different parts of
+                your query can also improve readability. For instance, you can
+                place each clause (SELECT, FROM, WHERE) on a new line. For
+                longer queries, consider placing each column in the SELECT
+                statement on a new line. It ultimately doesn't matter if you
+                choose to write your query on a single line or multiple lines,
+                as long as it is readable.
+                <pre><code>SELECT title, genre FROM movies_80s WHERE genre = 'Comedy';</code></pre>
               </li>
             </ul>
-            <p>These practices make your <span class="redacted">SQL</span> queries easier to read and modify.</p>
+            <p>
+              These practices make your
+              <span class="redacted">SQL</span> queries easier to read and
+              modify.
+            </p>
           </div>
-
 
           <p>
             <a href="../lesson-3" class="btn btn-dark-blue">
