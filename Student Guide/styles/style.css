@@ -117,3 +117,7 @@ pre code {
   counter-increment: line;
   margin-left: 20px; /* Indent the code */
 }
+.warning-icon {
+  float: left;
+  margin-right: 10px;
+}

@@ -30,9 +30,10 @@
         <div class="card-body">
           <h2 class="card-title">Lesson Overview</h2>
           <p>
-            In this lesson, we'll step away from the graphical comforts of DB
-            Browser and explore the more practical world of interacting with
-            SQLite databases through Python scripts. We'll cover:
+            In this lesson, we'll move on from the user-friendly graphical
+            interface of DB Browser and explore the more practical world of
+            interacting with SQLite databases through Python scripts. Our focus
+            will be on a database of American cars for sale. We'll cover:
           </p>
 
           <ol>
@@ -170,15 +171,19 @@
             query from a Python script.
           </p>
           <p>
-            Problem solving tip: if you get an error such as
-            <code>sqlite3.OperationalError: no such table: inventory</code>
-            try running this in IDLE.
+            <img src="../images/warning-circle.svg" class="warning-icon" /><b
+              >Problem solving tip:</b
+            >
+            if your IDE gives you an error like:
+            <code>sqlite3.OperationalError: no such table: inventory</code>,
+            make sure you are in the correct directory where the database is
+            located. Alternatively, try running the script from IDLE.
           </p>
 
           <div class="concept-box">
             <h5 class="card-title">
               <img src="../images/bookmark-book.svg" /> Understanding the
-              show_invernory.py script
+              show_inventory.py script
             </h5>
             <p>
               Let's break down what's happening in this Python script
@@ -340,21 +345,11 @@
               and Make
             </h5>
             <p>Modify your Python script as follows:</p>
-            <pre><code>import sqlite3
-  
-  conn = sqlite3.connect('car_inventory.db')
-  cursor = conn.cursor()
-  
-  colour = input("Enter car colour: ")
-  make = input("Enter car make: ")
-  
-  cursor.execute("SELECT * FROM car_inventory WHERE colour = ? AND make = ?;", (colour, make))
-  results = cursor.fetchall()
-  
-  for row in results:
-      print(row)
-  
-  conn.close()</code></pre>
+            <img
+              class="screenshot"
+              src="screenshots/dynamic-query.png"
+              alt="Dynamic query code"
+            />
             <p>
               This script prompts the user for car colour and make, constructs a
               SQL query with these inputs, and prints the matching cars. Notice
@@ -362,7 +357,73 @@
               injection vulnerabilities.
             </p>
           </div>
+          <p>
+            Hopefully, this approach has given you a taste of the power and
+            flexibility of constructing dynamic queries in Python. By taking
+            user input and incorporating it into your SQL queries, you can
+            create applications that respond to user needs and provide tailored
+            results from the database.
+          </p>
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> Handling User Input
+            </h5>
+            <p>
+              When constructing <span class="redacted">dynamic</span> queries
+              based on user input, it's essential to ensure that the input
+              <span class="redacted">matches</span> the structure of your
+              database. In our "car_showroom.db" database, the "colour" and
+              "make" <span class="redacted">fields</span> have the first letter
+              capitalised (e.g., "Red", "Toyota").
+            </p>
+            <p>
+              To ensure <span class="redacted">consistency</span>, we use the
+              <code>.title()</code> method in Python to convert the user's input
+              to title case. This ensures that even if the user enters "red" or
+              "toyota", the query will still function correctly, as it will be
+              transformed to "Red" and "Toyota" before being used in the query.
+            </p>
+            <p>
+              Failing to account for such
+              <span class="redacted">discrepancies</span> can lead to queries
+              returning no results, even if matching cars exist in the database.
+              Attention to detail in handling user input is crucial for building
+              robust and reliable database applications.
+            </p>
+          </div>
 
+          <h5>Building on Dynamic Queries</h5>
+          <p>
+            Before moving on to the next lesson, consider how you could expand
+            on the dynamic query script.
+          </p>
+
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Enhance the Dynamic
+              Query Script
+            </h5>
+            <p>Here are a few ideas to get you started:</p>
+
+            <ol>
+              <li>
+                <b>Include additional search criteria:</b> Modify the script to
+                allow users to search for cars based on multiple criteria, such
+                as price range, model year, or mileage.
+              </li>
+              <li>
+                <b>Implement error handling:</b> Add error handling to the
+                script to handle cases where the user enters invalid input or no
+                cars match the search criteria.
+              </li>
+              <li>
+                <b>Display results in a user-friendly format:</b> Enhance the
+                script to present the search results in a more readable and
+                visually appealing format, such as a table or list.
+              </li>
+            </ol>
+            There's one example attached in the lesson resources folder.
+          </div>
           <h2 class="card-title">Lesson Summary</h2>
           <p>
             In this lesson, we've ventured beyond the graphical interface and
@@ -374,7 +435,6 @@
             sense of quiet confidence in our ability to harness the combined
             power of Python and SQLite.
           </p>
-
           <p>
             <a href="../lesson-4" class="btn btn-dark-blue">
               Onwards To Lesson 4
