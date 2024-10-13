@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning SQL with Python</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sono:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <script src="../scripts/script.js" defer></script>
+  </head>
+
+  <body>
+    <a href="../index.html">
+      <img id="fixed-icon" src="../images/home.svg" alt="Open book" />
+    </a>
+    <div class="container">
+      <h1 class="display-8 text-center mt-5 mb-4">
+        Lesson 3 - Ordering and Limiting Results
+      </h1>
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Lesson Overview</h2>
+          <p>
+            In this lesson, we will look at some world population data publish
+            by the World Bank. We will learn how to narrow down our results by
+            using the ORDER BY clause to sort our data in ascending or
+            descending order. We will also use the LIMIT clause to restrict the
+            number of rows returned by our query. We'll cover the following:
+          </p>
+
+          <ol>
+            <li>
+              <b>ORDER BY:</b> Returning results in ascending or descending
+              order using in SQLite.
+            </li>
+            <li>
+              <b>LIMIT:</b> Restricting the number of rows returned by a query.
+            </li>
+            <li>
+              <b>Creating a GUI:</b> Using Python's Tkinter library to create a
+              simple interface which allows input of a country name and returns
+              a list of countries with a similar population.
+            </li>
+          </ol>
+          <p>
+            <img class="screenshot" src="../images/globe.jpg" alt="The Earth" />
+          </p>
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> ORDER BY and LIMIT:
+              Bringing Order to Chaos
+            </h5>
+            <p class="concept">
+              In the realm of data retrieval, order and brevity can be
+              invaluable virtues. Imagine sifting through a sprawling record of
+              the world's population with entries haphazardly arranged and no
+              end in sight. The <span class="redacted">ORDER BY</span> and
+              <span class="redacted">LIMIT</span> clauses in SQL provide the
+              means to impose order and conciseness on your query results,
+              transforming potential chaos into manageable information.
+            </p>
+
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> ORDER BY: Arranging Your
+              Data
+            </h5>
+            <p class="concept">
+              The <span class="redacted">ORDER BY</span> clause allows you to
+              sort your results based on one or more columns. This is akin to
+              arranging a world population register by country name, population,
+              or any other relevant metric. By specifying the column and the
+              desired sort order (<span class="redacted">ASC</span> for
+              ascending, <span class="redacted">DESC</span> for descending), you
+              can bring a sense of structure to your output.
+            </p>
+
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> LIMIT: Trimming the Fat
+            </h5>
+            <p class="concept">
+              The <span class="redacted">LIMIT</span> clause, on the other hand,
+              allows you to restrict the number of rows returned by your query.
+              This is particularly useful when dealing with a large population
+              dataset where retrieving all rows would be impractical or
+              overwhelming. By specifying a
+              <span class="redacted">LIMIT</span> value, you can focus on a
+              specific subset of the data.
+            </p>
+
+            <p class="concept">
+              Together, the <span class="redacted">ORDER BY</span> and
+              <span class="redacted">LIMIT</span> clauses provide a powerful
+              combination for managing and presenting your data in a clear and
+              concise manner, bringing a sense of calm order to the potentially
+              overwhelming world of information retrieval.
+            </p>
+          </div>
+          <h2 class="card-title">Using ORDER BY to Sort Results</h2>
+          <p>
+            We will return to DB Browser and the execute SQL tab to explore
+            ordering data. Let's start by exploring the database to get a feel
+            for the data.
+          </p>
+
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" />Task: Exploring the World
+              Population Database
+            </h5>
+            <ol>
+              <li>
+                Open DB Browser and load the world_population.db file. Click on
+                the Execute SQL tab and run the following query:
+
+                <pre><code>SELECT * FROM population_data</code></pre>
+              </li>
+              <li>
+                Explore the data and use your existing knowledge of SQL to run
+                some basic queries.
+              </li>
+            </ol>
+            Once you have familiarized yourself with the data, we can move on to
+            sorting the results.
+          </div>
+          <p>
+            Once you have familiarised yourself with the data, we can move on to
+            sorting the results.
+          </p>
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> A Quirk of SQL Naming
+              Conventions
+            </h5>
+            <p class="concept">
+              You might have noticed a slight oddity in our
+              <span class="redacted">database</span>: the
+              <span class="redacted">fields</span> representing years like 1961
+              are named like "_1961" rather than simply "1961". This isn't a
+              typographical error, but rather a necessity imposed by the rules
+              of <span class="redacted">SQL</span> naming conventions.
+            </p>
+            <p class="concept">
+              In <span class="redacted">SQL</span>, names (whether for tables or
+              fields) cannot begin with a <span class="redacted">number</span>.
+              This seemingly arbitrary rule is rooted in the way
+              <span class="redacted">SQL</span> parses and interprets your
+              commands. A name starting with a number could be confused with a
+              numeric value, leading to
+              <span class="redacted">syntax errors</span> or unexpected
+              behaviour.
+            </p>
+            <p class="concept">
+              To <span class="redacted">circumvent</span> this constraint, we
+              adopt the convention of prefixing such names with an underscore.
+              This simple addition ensures that the name is
+              <span class="redacted">valid</span> while still conveying its
+              intended meaning.
+            </p>
+          </div>
+          <h5 class="card-title">
+            <img src="../images/bookmark-book.svg" /> Sorting Data with ORDER BY
+          </h5>
+          <p>
+            You will have noticed that the database is ordered alphabetically by
+            country name. However, we may prefer to oder the data by population
+            in ascending or descending order. Let's try this out.
+          </p>
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" />
+              Task: Sorting Data by Population
+            </h5>
+            <ol>
+              <li>
+                In the Execute SQL tab, run the following query to sort the data
+                by population in ascending order:
+                <pre><code>SELECT country_name, _1961 FROM world_population ORDER BY _1961 ASC</code></pre>
+                If this is successful, you should see the below output:
+                <img
+                  class="screenshot"
+                  src="screenshots/countries-asc.png"
+                  alt="Order by ASC"
+                />
+              </li>
+              <li>
+                Now, try sorting the data in descending order by running the
+                following query:
+                <pre><code>SELECT country_name, _1961 FROM population_data ORDER BY _1961 DESC</code></pre>
+                If this is successful, you should see the below output:
+                <img
+                  class="screenshot"
+                  src="screenshots/countries-desc.png"
+                  alt="Order by DESC"
+                />
+              </li>
+            </ol>
+          </div>
+          <p>
+            By using the ORDER BY clause, you can arrange your data in a way
+            that makes it easier to interpret and analyse. Whether you're
+            sorting by population, country name, or any other relevant metric,
+            this feature allows you to bring order to the chaos of raw data.
+          </p>
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> Deconstructing the Query
+            </h5>
+            <p class="concept">
+              Let's break down this SQL query piece-by-piece:
+            </p>
+            <ol>
+              <li class="concept">
+                <b>
+                  <pre><code><span class="redacted">SELECT country_name, _1999</span></code></pre></b
+                >This part specifies which columns we want to retrieve from the
+                "world_population" table. In this case, we're interested in the
+                "country_name" and "_1999" columns, which represents the
+                country's name and its population in the year 1999,
+                respectively.
+              </li>
+              <li class="concept">
+                <b>
+                  <pre><code><span class="redacted">FROM world_population</span></code></pre>
+                </b>
+                This indicates that we want to retrieve data from the
+                "world_population" table.
+              </li>
+              <li class="concept">
+                <b>
+                  <pre><code><span class="redacted">ORDER BY _1999 DESC</span></code></pre>
+                </b>
+                This is where the sorting magic happens.
+                <ul>
+                  <li class="concept">
+                    <pre><code><span class="redacted">ORDER BY _1999</span></code></pre>
+                    tells the database to sort the results based on the values
+                    in the "_1999" column.
+                  </li>
+                  <li class="concept">
+                    <pre><code><span class="redacted">DESC</span></code> </pre>
+                    (short for "descending") specifies that we want to sort the
+                    results in descending order, meaning from highest population
+                    to lowest.
+                  </li>
+                </ul>
+              </li>
+            </ol>
+
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> ASCending Order
+            </h5>
+          </div>
+          <p>
+            If we were to replace <code>DESC</code> with <code>ASC</code> (short
+            for "ascending"), the results would be sorted in the opposite order,
+            from lowest population to highest. This would give us a list of
+            countries starting with the least populous in 1999 and ending with
+            the most populous.
+          </p>
+
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Refining Your Query
+            </h5>
+            <p>
+              Combine your new knowledge WHERE clauses with ORDER BY to find run
+              the following queries. As previously, attempt this without looking
+              at the answers, or adopt a 'look, cover, query, check' approach.
+            </p>
+            <ol>
+              <li>
+                Order the data by population in ascending order for the year
+                2023, however, include the 1990 population in the results to
+                allow for comparison.
+                <pre><code
+                    ><span class="cover">SELECT country_name, _1990, _2023 FROM world_population ORDER BY _2023 ASC</span></code
+                  ></pre>
+              </li>
+              <li>
+                Order the data by population in descending order for the year
+                2010, however, include the 2000 population in the results to
+                allow for comparison.
+                <pre><code
+                    ><span class="cover">SELECT country_name, _2000, _2010 FROM world_population ORDER BY _2010 DESC</span></code
+                  ></pre>
+              </li>
+              <li>
+                There are a lot of very small nations in the dataset. Order all
+                the data by 2023 population in ascending order, but exclude
+                small nations from your results by adding a WHERE clause to the
+                query to include only nations with a population of greater than
+                half a million in 2023.
+
+                <pre><code
+                    ><span class="cover">SELECT country_name, _2023 FROM world_population WHERE _2023 > 500000 ORDER BY _2023 ASC</span></code
+                  ></pre>
+              </li>
+              <li>
+                Show how population has changed in the largest nations between
+                1990 to 2023 by ordering by descending population in 2023, but
+                only for nations with a 2023 population greater than 100
+                million.
+
+                <pre><code
+                    ><span class="cover">SELECT country_name, _1990, _2023 FROM world_population WHERE _2023 > 100000000 ORDER BY _2023 DESC</span></code
+                  ></pre>
+              </li>
+            </ol>
+          </div>
+
+          <h2 class="card-title">Limiting Results with LIMIT</h2>
+          <p>
+            In addition to sorting your data, you may also want to limit the
+            number of rows returned by your query. This can be useful when
+            dealing with large datasetsor when you only need to focus on a
+            specific subset of the data. Let's explore how to use the LIMIT
+            clause to achieve this.
+          </p>
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> LIMIT: Exercising
+              Restraint in Data Retrieval
+            </h5>
+            <p class="concept">
+              When querying a database, especially one as extensive as a world
+              population database, it's often
+              <span class="redacted">impractical</span> and inefficient to
+              retrieve every single record. The LIMIT
+              <span class="redacted">clause</span> in SQL provides a mechanism
+              for exercising restraint, allowing you to
+              <span class="redacted">specify</span> the maximum number of rows
+              you wish to retrieve.
+            </p>
+            <p class="concept">
+              Think of LIMIT as a gatekeeper, allowing only a select few to pass
+              through. By <span class="redacted">appending</span>
+              <code>LIMIT 10</code> to your query, you instruct the database to
+              return no more than 10 rows, regardless of how many records match
+              the query's <span class="redacted">criteria</span>.
+            </p>
+            <p class="concept">This can be particularly useful for:</p>
+            <ul>
+              <li class="concept">
+                <b><span class="redacted">Previewing</span> data:</b> Quickly
+                get a glimpse of the data without retrieving the entire dataset.
+              </li>
+              <li class="concept">
+                <b><span class="redacted">Testing</span> queries:</b> Verify the
+                correctness of your query logic on a smaller subset of data.
+              </li>
+              <li class="concept">
+                <b>Retrieving <span class="redacted">top</span> results:</b>
+                Obtain the top N records based on a specific ordering (e.g., the
+                top 10 most populous countries).
+              </li>
+            </ul>
+          </div>
+          <p>
+            Let's put this into practice by limiting the number of rows returned
+            by a query.
+          </p>
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Limiting Results with
+              LIMIT
+            </h5>
+            <ol>
+              <li>
+                In the Execute SQL tab, run the following query to retrieve the
+                top 5 most populous countries in 2023:
+                <pre><code>SELECT country_name, _2023 FROM world_population ORDER BY _2023 DESC LIMIT 5</code></pre>
+                If this is successful, you should see the below output:
+                <img
+                  class="screenshot"
+                  src="screenshots/top-5-populous.png"
+                  alt="Top 5 populous countries"
+                />
+              </li>
+              <li>
+                Now, try limiting the results to the 10 least populous countries
+                in 2023 by running the following query:
+                <pre><code>SELECT country_name, _2023 FROM world_population ORDER BY _2023 ASC LIMIT 10</code></pre>
+                If this is successful, you should see the below output:
+                <img
+                  class="screenshot"
+                  src="screenshots/bottom-10-populous.png"
+                  alt="Bottom 10 populous countries"
+                />
+              </li>
+            </ol>
+          </div>
+          <h5 class="card-title">
+            Bringing It All Together: ORDER BY and LIMIT
+          </h5>
+          <p>
+            By combining the ORDER BY and LIMIT clauses, you can refine your
+            queries to focus on specific subsets of data. Whether you're
+            retrieving the top N results, previewing a small sample of data, or
+            testing your query logic, these features provide a powerful means of
+            controlling the output of your queries.
+          </p>
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Putting It All
+              Together
+            </h5>
+            <p>
+              Now that you've learned how to sort and limit your query results,
+              let's put your skills to the test. Run the following queries to
+              practice using ORDER BY and LIMIT together:
+            </p>
+            <ol>
+              <li>
+                Retrieve the top 3 most populous countries in 2023, ordered by
+                population in descending order.
+              </li>
+              <pre><code><span class="cover">SELECT country_name, _2023 FROM world_population ORDER BY _2023 DESC LIMIT 3</span></code></pre>
+              <li>
+                Retrieve the 5 least populous countries in 2023, ordered by
+                population in ascending order.
+              </li>
+              <pre><code><span class="cover">SELECT country_name, _2023 FROM world_population ORDER BY _2023 ASC LIMIT 5</span></code></pre>
+              <li>
+                Find the countries with the highest population growth between
+                1990 and 2023 by ordering the data by the difference in
+                population between these years in descending order. Limit the
+                results to the top 5 countries. PEEKING highly recommended!
+              </li>
+              <pre><code><span class="cover">SELECT country_name, (_2023 - _1990) AS population_growth FROM world_population ORDER BY population_growth DESC LIMIT 5</span></code></pre>
+            </ol>
+          </div>
+          <p>
+            That last one was a stinker - we will get to aggregate functions in
+            the future, but here is a quick explanation of how AS works.
+          </p>
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> AS: Renaming Columns
+            </h5>
+            <p class="concept">
+              The <span class="redacted">AS</span> keyword in SQL allows you to
+              rename the columns in your query results. This can be useful for:
+            </p>
+            <ul>
+              <li class="concept">
+                <b>Improving readability:</b> Assigning more
+                <span class="redacted">descriptive</span> names to columns for
+                easier interpretation.
+              </li>
+              <li class="concept">
+                <b>Creating calculated columns:</b> Using
+                <span class="redacted">aliases</span> to represent the results
+                of calculations or expressions.
+              </li>
+            </ul>
+            <p class="concept">
+              In the query above, we used <code>AS population_growth</code> to
+              rename the calculated column representing the difference in
+              population between 1990 and 2023. This
+              <span class="redacted">alias</span> provides a clear and concise
+              label for the data, making it easier to understand the results of
+              the query.
+            </p>
+          </div>
+          <h2 class="card-title">Creating a GUI with Tkinter</h2>
+          <p>
+            Well done! You've mastered the art of ordering and limiting your SQL
+            queries. Now, let's put your newfound skills could be applied by
+            creating a simple GUI that allows users to input a country name and
+            retrieve a list of countries with a similar population. We'll use
+            Python's Tkinter library to build the interface and execute the SQL
+            queries.
+            <img class="screenshot" src="screenshots/countries.png" alt="GUI" />
+          </p>
+          <p>
+            This code has been written for you and is found attached in lesson
+            resources. For now, notice how the SQL query is constructed in the
+            code.
+          </p>
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> LIMIT in SQL vs.
+              Fetching in Python
+            </h5>
+            <p class="concept">
+              You will recall that the
+              <span class="redacted">LIMIT clause</span> in SQL allows you to
+              restrict the number of rows returned by a query. In this Python
+              snippet, we achieve a similar outcome through the
+              <code><span class="redacted">fetchone()</span> </code> method.
+            </p>
+            <p class="concept">
+              While the SQL query
+              <code
+                >SELECT `_{year}` FROM world_population WHERE country_name =
+                ?</code
+              >
+              could potentially return multiple rows if multiple countries had
+              the same name, <code>cursor.fetchone()</code> retrieves only the
+              <span class="redacted">first</span> row. This effectively acts
+              like a <code><span class="redacted">LIMIT 1</span></code> clause,
+              ensuring that we obtain only a single population value for the
+              specified country and year.
+            </p>
+            <p class="concept">
+              If we wanted to retrieve more than one row, we could use the
+              <code>fetchmany(n)</code> method (where 'n' is the desired number
+              of rows) or <code>fetchall()</code> to retrieve all rows. These
+              methods provide <span class="redacted">flexibility</span> in how
+              we handle the results of our SQL queries within Python.
+            </p>
+          </div>
+          <p>
+            All that is left to do is to run the code and see the results. Run
+            the attached countries.py file and input a country name to see the
+            results.
+          </p>
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" />Task: Running the GUI
+            </h5>
+            <ol>
+              <li>
+                Download the attached countries.py file and run it in your
+                Python environment.
+              </li>
+              <li>
+                Input a country name and observe the results. Try different
+                countries to see how the population data compares.
+              </li>
+              <li>
+                Reflect on how the SQL query is constructed in the code and how
+                the results are displayed in the GUI.
+              </li>
+            </ol>
+          </div>
+          <h2 class="card-title">Lesson Summary</h2>
+          <p>
+            In this lesson, we explored the power of the ORDER BY and LIMIT
+            clauses in SQL, which allow you to sort and restrict the results of
+            your queries. By using ORDER BY, you can arrange your data in
+            ascending or descending order based on one or more columns,
+            enhancing the organization and readability of your output. The LIMIT
+            clause enables you to focus on a specific subset of the data by
+            restricting the number of rows returned by your query. Together,
+            these clauses provide a powerful combination for managing and
+            presenting your data in a clear and concise manner, bringing a sense
+            of calm order to the potentially overwhelming world of information
+            retrieval.
+          </p>
+          <p>
+            <a href="../lesson-5" class="btn btn-dark-blue">
+              Onwards To Lesson 5
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
