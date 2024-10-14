@@ -24,10 +24,358 @@
     </a>
     <div class="container">
       <h1 class="display-8 text-center mt-5 mb-4">
-        Lesson 3 - Ordering and Limiting Results
+        Lesson 5 - Updating and Deleting Data
       </h1>
       <div class="card">
-        <div class="card-body"></div>
+        <div class="card-body">
+          <h2 class="card-title">Lesson Overview</h2>
+          <p class="card-text">
+            In this lesson we will take a brief look at updating and deleting
+            data in a database of the Periodic Table of Elements as it was in
+            1900. We will cover the following:
+          </p>
+          <ol>
+            <li>
+              <b>Updating Data:</b> Modifying existing records using UPDATE
+            </li>
+            <li>
+              <b>Deleting Data:</b> Removing unwanted records using DELETE
+            </li>
+            <li>
+              <b>Implementing in Python</b>: Creating a simple Python script to
+              update and delete data
+            </li>
+          </ol>
+          <img
+            class="screenshot"
+            src="../images/chemistry.jpg"
+            alt="Chemistry"
+          />
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> The Periodic Table and
+              Databases: Embracing Change and Deletion
+            </h5>
+            <p class="concept">
+              The periodic table, that iconic chart of
+              <span class="redacted">elements</span>, and a database, a
+              structured set of data, might seem like disparate entities, yet
+              they share a common need for
+              <span class="redacted">updates</span> and
+              <span class="redacted">deletions</span> to maintain accuracy and
+              relevance.
+            </p>
+            <p class="concept">
+              Just as the periodic table has undergone numerous transformations
+              throughout its history, with new
+              <span class="redacted">elements</span> being discovered and added,
+              and occasionally, elements being removed when further research
+              reveals their true nature or lack of existence, a database also
+              requires adjustments to reflect changes in the real world.
+            </p>
+            <p class="concept">
+              Imagine a database of car inventory. If the price of a car changes
+              or a car is sold, the database needs to be updated to reflect
+              these changes. Similarly, if an element's atomic weight is revised
+              or an element is removed from the
+              <span class="redacted">periodic table</span>, the corresponding
+              database of elements needs to be updated to maintain its accuracy.
+            </p>
+          </div>
+          <h2 class="card-title">Updating records</h2>
+          <p class="card-text">
+            The <code>UPDATE</code> statement is used to modify existing records
+            in a table. It allows you to change the values of one or more
+            columns in a row based on a specified condition. Let's look at some
+            examples with reference to the Periodic Table database:
+          </p>
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Explore the Periodic
+              Table as it was in 1900
+            </h5>
+            <ol>
+              <li>
+                Find the periodic_table_1900.db file in the resources folder and
+                open it using DB Browser for SQLite.
+              </li>
+              <li>
+                Using your existing knowledge of SQL, explore the data set. Can
+                you already see fields that looks out of date?
+              </li>
+            </ol>
+          </div>
+          <p>
+            Now that we have explored the data we can begin to update it. Let's
+            explore how the UPDATE keyword works in SQL.
+          </p>
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> The UPDATE Statement
+            </h5>
+            <p class="concept">
+              The <code><span class="redacted">UPDATE</span></code> statement is
+              used to modify existing records in a table. It allows you to
+              change the values of one or more columns in a row based on a
+              <span class="redacted">specified</span> condition.
+            </p>
+            <p class="concept">
+              The basic <span class="redacted">syntax</span> for the
+              <code>UPDATE</code> statement is as follows:
+            </p>
+            <pre><code><span class="redacted">UPDATE</span> table_name
+<span class="redacted">SET</span> column1 = value1, column2 = value2, ...
+<span class="redacted">Where</span> condition;</code></pre>
+            <p class="concept">
+              The <code>UPDATE</code> statement consists of three main parts:
+            </p>
+            <ul>
+              <li class="concept">
+                The <code>UPDATE</code> keyword is followed by the name of the
+                <span class="redacted">table</span> you want to update.
+              </li>
+              <li class="concept">
+                The <code>SET</code> keyword is used to specify the
+                <span class="redacted">columns</span> you want to update and the
+                new values you want to assign to them.
+              </li>
+              <li class="concept">
+                The <code>WHERE</code> clause is used to specify the condition
+                that must be met for the records to be updated. If you
+                <span class="redacted">omit</span> the
+                <code>WHERE</code> clause,
+                <span class="redacted">all</span> records in the table will be
+                updated.
+              </li>
+            </ul>
+          </div>
+          <p>
+            Well start with a guided example using the Execute SQL tab in DB
+            Browser
+          </p>
+          <div class="task-box">
+            <h5 class="card-title task">
+              <img src="../images/task-list.svg" /> Task: Update the Atomic Mass
+              of Iron (FE)
+            </h5>
+            <p>
+              1900: The atomic mass of iron was generally accepted to be around
+              56. <br />Present Day: The IUPAC currently lists the standard
+              atomic weight of iron as [55.845(2)]. This more precise value
+              reflects a weighted average of iron's isotopes, taking into
+              account their natural abundance.
+            </p>
+            <ol>
+              <li>
+                Open the Execute SQL tab in DB Browser and write the following
+                SQL query:
+                <pre><code>UPDATE periodic_table_1900 
+SET atomic_mass = 55.845 
+WHERE element_symbol = 'Fe';</code></pre>
+              </li>
+              <li>
+                Execute the query and verify that the atomic mass of Hydrogen
+                has been updated. You should see that Iron has changed from
+                this...
+                <img
+                  class="screenshot"
+                  src="screenshots/before.png"
+                  alt="Iron Atomic Mass before"
+                />
+                <p>To this...</p>
+                <img
+                  class="screenshot"
+                  src="screenshots/after.png"
+                  alt="Iron Atomic Mass after"
+                />
+              </li>
+            </ol>
+          </div>
+          <p>
+            Now that we have updated the atomic mass of Iron, have a go revising
+            some of the other elements in the Periodic Table database.
+          </p>
+          <div class="task-box">
+            <h5 class="card-title task">
+              <img src="../images/task-list.svg" /> Task: Update the other
+              elements
+            </h5>
+            <p>
+              Using the same syntax as above, update the the periodic table to
+              reflect the following changes. Remember, use a look, cover, query,
+              check approach.
+            </p>
+            <ol>
+              <li>
+                <b>Indium (In):</b> Initially, the atomic mass of indium was
+                believed to be around 75.6. However, more precise measurements
+                later revealed that it was closer to 114.8, a significant
+                revision.
+                <pre><code><span class="cover">UPDATE periodic_table_1900 SET atomic_mass = 114.8 WHERE element_symbol = 'In';</span></code></pre>
+              </li>
+              <li>
+                <b>Iridium (Ir):</b> The atomic mass of iridium has undergone
+                several revisions throughout history. Initially, it was thought
+                to be around 197. Later, more accurate measurements placed it
+                closer to 192.2.
+                <pre><code><span class="cover">UPDATE periodic_table_1900 SET atomic_mass = 192.2 WHERE element_symbol = 'Ir';</span></code></pre>
+              </li>
+              <li>
+                <b>Nickel (Ni):</b> In 1900, the atomic mass of nickel was
+                generally accepted to be around 58.7. However, with the
+                discovery of isotopes and improved measurement techniques, the
+                atomic mass was later revised to 58.6934(4).
+                <pre><code><span class="cover">UPDATE periodic_table_1900 SET atomic_mass = 58.6934 WHERE element_symbol = 'Ni';</span></code></pre>
+              </li>
+              <li>
+                Sometimes, the revisions to the periodic table involve more than
+                just atomic weights. Occasionally, an element might undergo a
+                name change due to historical reasons, standardisation efforts,
+                or to avoid confusion with other elements. One such example is
+                the element originally known as "Columbium" (Cb), which was
+                later renamed to "Niobium" (Nb). Can you write the SQL query to
+                update the "periodic_table" database to reflect this name
+                change?
+
+                <pre><code><span class="cover">UPDATE periodic_table_1900 SET element_symbol = 'Nb', element_name = 'Niobium' WHERE element_symbol = 'Cb';</span></code></pre>
+              </li>
+            </ol>
+          </div>
+          <h2 class="card-title">Deleting records</h2>
+          <p class="card-text">
+            The <code>DELETE</code> statement is used to remove unwanted records
+            from a table. It allows you to delete one or more rows based on a
+            specified condition.
+          </p>
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> The DELETE Statement
+            </h5>
+            <p class="concept">
+              The <code><span class="redacted">DELETE</span></code> statement is
+              used to remove unwanted records from a table. It allows you to
+              delete one or more rows based on a
+              <span class="redacted">specified</span> condition.
+            </p>
+            <p class="concept">
+              The basic <span class="redacted">syntax</span> for the
+              <code>DELETE</code> statement is as follows:
+            </p>
+            <pre><code><span class="redacted">DELETE</span> <span class="redacted">FROM</span> table_name
+<span class="redacted">WHERE</span> condition;</code></pre>
+
+            <p class="concept">
+              The <code>DELETE</code> statement consists of two main parts:
+            </p>
+            <ul>
+              <li class="concept">
+                The <code>DELETE</code> keyword is followed by the
+                <span class="redacted">FROM</span> keyword and the name of the
+                <span class="redacted">table</span> from which you want to
+                delete records.
+              </li>
+              <li class="concept">
+                The <code>WHERE</code> clause is used to specify the condition
+                that must be met for the records to be deleted. If you
+                <span class="redacted">omit</span> the
+                <code>WHERE</code> clause,
+                <span class="redacted">all</span> records in the table will be
+                deleted.
+              </li>
+            </ul>
+          </div>
+          <p>
+            Let's practice deleting records from the Periodic Table database.
+          </p>
+          <div class="task-box">
+            <h5 class="card-title task">
+              <img src="../images/task-list.svg" /> Task: Remove the element
+              Didymium (Di)
+            </h5>
+            <p>
+              Didymium was once thought to be an element, but it was later
+              discovered to be a mixture of the elements praseodymium and
+              neodymium. Let's remove Didymium from the Periodic Table database.
+            </p>
+            <ol>
+              <li>
+                Open the Execute SQL tab in DB Browser and write the following
+                SQL query:
+                <pre><code>DELETE FROM periodic_table_1900 WHERE element_symbol = 'Di';</code></pre>
+              </li>
+              <li>
+                Execute the query and verify that the element Didymium has been
+                removed from the database.
+              </li>
+            </ol>
+          </div>
+          <p>
+            Now that you have successfully removed Didymium from the Periodic
+            Table database, have a go at removing some of the other elements.
+          </p>
+          <div class="task-box">
+            <h5 class="card-title task">
+              <img src="../images/task-list.svg" /> Task: Remove the imposter
+              elements
+            </h5>
+            <p>
+              Ok - confession time. I struggled to find other elements that
+              needed removing so I made some up!
+            </p>
+            <ol>
+              <li>
+                <b>Get rid of Lovelacium:</b>
+                <pre><code><span class="cover">DELETE FROM periodic_table_1900 WHERE element_name = 'Lovelacium';</span></code></pre>
+              </li>
+              <li>
+                <b>Get rid of Hopperium:</b>
+                <pre><code><span class="cover">DELETE FROM periodic_table_1900 WHERE element_name = 'Hopperium';</span></code></pre>
+              </li>
+              <li>
+                <b>Get rid of Babbagium:</b>
+                <pre><code><span class="cover">DELETE FROM periodic_table_1900 WHERE element_name = 'Babbagium';</span></code></pre>
+              </li>
+            </ol>
+          </div>
+          <h2 class="card-title">Implementing in Python</h2>
+          <p>
+            Now that you have learned how to update and delete records in a
+            database using SQL, you can apply this knowledge to Python.
+          </p>
+          <p>The best way to learn about this, is to see it in action.</p>
+          <div class="task-box">
+            <h5 class="card-title task">
+              <img src="../images/task-list.svg" /> Task: Run the Python script
+            </h5>
+            <ol>
+              <li>
+                Open the Python script in the resources folder and run it.
+              </li>
+              <li>
+                Observe the output and verify that the script updates and
+                deletes records in the database.
+              </li>
+              <li>
+                Explore the code and see how the SQL queries are executed in the
+                Python script.
+                <img
+                  class="screenshot"
+                  src="screenshots/periodic_table.png"
+                  alt="Python script"
+                />
+              </li>
+            </ol>
+          </div>
+          <h2 class="card-title">Lesson Summary</h2>
+          <p>
+            In this lesson, you learned how to update and delete records in a
+            database using SQL. You explored the <code>UPDATE</code> and
+            <code>DELETE</code> statements and practiced using them to modify
+            and remove records from the Periodic Table database. You also
+            applied this knowledge to Python by running a script that updates
+            and deletes records in the database.
+          </p>
+        </div>
       </div>
     </div>
   </body>
