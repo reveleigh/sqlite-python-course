@@ -58,10 +58,77 @@
                 <h2 class="card-title">Creating a Database</h2>
                 <p>Before we can start adding data to a database, we need to create the database itself. We will use the <code>CREATE DATABASE</code> statement to do this.</p>
                 <div class="task-box">
-                    <h5 class="card-title">Task</h5>
-                    <p>Create a new database called <code>student_scores</code>.</p>
-                    
+                    <h5 class="card-title"><img src="../images/task-list.svg">Task: Creating Tables in A Blank Database</h5>
+                    <ol>
+                <li>
+                        Create a table for student test scores
+                    </li>
+                    </ul>
+                    <ul>
+                        <li>Enter the following SQL statement: <pre><code>CREATE TABLE scores (id INTEGER PRIMARY KEY, student_name TEXT, test_name TEXT, score INTEGER)</code></pre></li>
+                        <li>Click the "Run" button</li>
+                    </ul>
+                        <li>Check that you have successfully created a databse by clicking on the database structure tab. You should see the below:
+                            <img class="screenshot" src="screenshots/database-structure.png" alt="Database Structure" />
+                        </li>
+                    </ol>
                 </div>
+                <p>
+                    Now that we have a database and a table, we can start adding data to it. We will use the <code>INSERT INTO</code> statement to do this.
+                </p>
+                <div class="concept-box">
+                    <h5 class="card-title">
+                      <img src="../images/bookmark-book.svg" /> Deconstructing the CREATE <span class="redacted">TABLE</span> Statement
+                    </h5>
+                    <p class="concept">
+                      Let's break down this <span class="redacted">SQL</span> statement piece-by-piece to understand how it creates a <span class="redacted">table</span> named "scores":
+                    </p>
+                    <ol>
+                      <li class="concept"><b><code><span class="redacted">CREATE TABLE scores</span></code></b>: This part declares our intention to create a new <span class="redacted">table</span> and gives it the name "scores."  Think of it as the title of a new chapter in your database.</li>
+                      <li class="concept"><b><code>(id INTEGER PRIMARY KEY, student_name TEXT, test_name TEXT, score INTEGER)</code></b>:  This section defines the structure of the <span class="redacted">table</span>, specifying the columns it will contain and their data types.</li>
+                          <ul>
+                              <li class="concept"><b><code><span class="redacted">id INTEGER PRIMARY KEY</span></code></b>: This creates a column named "id" to store integer values. The <code>PRIMARY KEY</code> constraint designates this column as the unique identifier for each row in the <span class="redacted">table</span>, ensuring that no two rows have the same "id."</li>
+                              <li class="concept"><b><code><span class="redacted">student_name TEXT</span></code></b>: This creates a column named "student_name" to store text values, presumably the names of the students who took the tests.</li>
+                              <li class="concept"><b><code><span class="redacted">test_name TEXT</span></code></b>: This creates a column named "test_name" to store text values, likely the names of the tests taken.</li>
+                              <li class="concept"><b><code><span class="redacted">score INTEGER</span></code></b>: This creates a column named "score" to store <span class="redacted">integer</span> values, representing the scores achieved on the tests.</li>
+                          </ul>
+                      </li>
+                    </ol>
+                    <p class="concept">
+                      In essence, this <span class="redacted">SQL</span> statement creates a structured <span class="redacted">table</span> named "scores" with four columns: a unique identifier ("id"), the student's name ("student_name"), the test name ("test_name"), and the score achieved ("score").  This <span class="redacted">table</span> is now ready to store data about test results in an organized and efficient manner.
+                    </p>
+                  </div>
+                <h2 class="card-title">Inserting Data</h2>
+                <p>
+                    Let's start adding some data to our scores table. 
+                </p>
+                <div class="task-box">
+                    <h5 class="card-title"><img src="../images/task-list.svg">Task: Inserting Data Into A Table</h5>
+                    <ol>
+                        <li>Insert a record into the scores table</li>
+                        <ul>
+                            <li>Enter the following SQL statement: <pre><code>INSERT INTO scores (student_name, test_name, score) VALUES ('Alice', 'Math', 95)</code></pre></li>
+                            <li>Click the "Run" button</li>
+                        </ul>
+                        <li>Check that you have successfully inserted a record by clicking on the data tab. You should see the below:<br>
+                            
+                            <img class="screenshot" src="screenshots/insert-example.png" alt="Inserted Data" />
+                        </li>
+                    </ol>
+                </div>
+                <p>
+                You have now successfully inserted data into a table. Practice by inserting more records into the table.
+                </p>
+                <div class="Task">
+                    <h5 class="card-title"><img src="../images/task-list.svg">Task: Inserting More Data</h5>
+                    
+                    <p>Add in the following records. See if you can do it without peeking.</p>
+                    <ol>
+                        <li>
+                            Rupert scored 85 on his English test
+                            <pre><code><span="cover"></span></code></pre>
+                        </li>
+                    </ol>
           
         </div>
       </div>
