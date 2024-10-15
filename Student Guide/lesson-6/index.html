@@ -145,8 +145,66 @@
 
                     </ol>
                 </div>
+                <p>
+                    You have now successfully inserted multiple records into a table. 
+                </p>
+                <div class="concept-box">
+                  <h5 class="card-title">
+                    <img src="../images/bookmark-book.svg" /> The Power of Bulk Inserts
+                  </h5>
+                  <p class="concept">
+                    Imagine having to add hundreds or even thousands of test scores to add, one at a time. The task would be tedious and time-consuming. Fortunately, in the world of databases, the <span class="redacted">INSERT INTO</span> statement offers a powerful feature: the ability to add multiple records with a single command.
+                  </p>
+                  <p class="concept">
+                    This <span class="redacted">bulk</span> insert capability allows you to efficiently populate your tables with data, saving you from the monotony of inserting each record individually. By providing multiple sets of <span class="redacted">VALUES</span>, each enclosed in parentheses and separated by commas, you can insert multiple rows at once.
+                  </p>
+                  <p class="concept">
+                    For instance, the statement:
+                  </p>
+                  <pre><code>INSERT INTO scores (student_name, test_name, score) VALUES ('Quincy', 'Math', 74), ('Jakub', 'English', 67), ('Ada', 'Science', 90);</code></pre>
+                  <p class="concept">
+                    adds three new rows to the "scores" table with a single command. This <span class="redacted">streamlines</span> the process of data entry, allowing you to quickly and efficiently populate your database with large amounts of information.
+                  </p>
+                  
+                </div>
 
-          
+          <h2 class="card-title">Implementing in Python</h2>
+          <p>
+            Now that we have learned how to create a database, create tables, and insert data, let's see how we can do this in Python. We will use the <code>sqlite3</code> library to interact with our database.  
+          </p>
+          <div class="task-box">
+            <h5 class="card-title"><img src="../images/task-list.svg">Task: Inserting Data Using Python</h5>
+            <p>
+            In the lesson resources you will find a Pythong script that adds records to our students.db database. It prompts the user to input the student name, test name and their score. It then gives a success message and returns the highest score yet for that test name. 
+          </p>
+          <ol>
+            <li>Look over the file - make sure to place it in the same folder as your students.db database. See if you can work out what code is missing.
+              <img class="screenshot" src="screenshots/insert_scores.png" alt="Python Script to insert scores" />
+            </li>
+            <li>
+              If you are really stuck, refer to below for the missing code - you can also the final script in the lesson resources.
+              <ul>
+                <li>
+                  <pre><code><span class="cover">cursor.execute("INSERT INTO scores (student_name, test_name, score) VALUES (?, ?, ?)", (student_name, test_name, score))</span></code></pre>
+                </li>
+                <li>
+                  <pre><code><span class="cover">cursor.execute("SELECT student_name, score FROM scores WHERE test_name = ? ORDER BY score DESC LIMIT 1", (test_name,))</span></code></pre>
+                </li>
+              </ul>
+            </li>
+          </ol>
+          </div>
+         <h2 class="card-title">Lesson Summary</h2>
+          <p>
+            In this lesson we have learned how to create a database, create tables and insert data into those tables. We have also seen how to do this in Python.
+          </p>
+          <p>
+            <a href="../lesson-7" class="btn btn-dark-blue">
+              Onwards To Lesson 7
+            </a>
+          </p>
+
+          </ol>
         </div>
       </div>
     </div>
