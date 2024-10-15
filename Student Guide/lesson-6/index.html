@@ -24,7 +24,7 @@
     </a>
     <div class="container">
       <h1 class="display-8 text-center mt-5 mb-4">
-        Lesson 6 - INSERT data Into Tables
+        Lesson 6 - INSERT Data Into Tables
       </h1>
       <div class="card">
         <div class="card-body">
@@ -119,16 +119,33 @@
                 <p>
                 You have now successfully inserted data into a table. Practice by inserting more records into the table.
                 </p>
-                <div class="Task">
+                <div class="task-box">
                     <h5 class="card-title"><img src="../images/task-list.svg">Task: Inserting More Data</h5>
                     
                     <p>Add in the following records. See if you can do it without peeking.</p>
                     <ol>
                         <li>
                             Rupert scored 85 on his English test
-                            <pre><code><span="cover"></span></code></pre>
+                            <pre><code><span class="cover">INSERT INTO scores (student_name, test_name, score) VALUES ('Rupert', 'English', 85)</span></code></pre>
                         </li>
+                        <li>
+                            Sarah scored 90 on her Science test
+                            <pre><code><span class="cover">INSERT INTO scores (student_name, test_name, score) VALUES ('Sarah', 'Science', 90)</span></code></pre>
+                        </li>
+                        <li>
+                            Harpreet scored 75 on his History test
+                            <pre><code><span class="cover">INSERT INTO scores (student_name, test_name, score) VALUES ('Harpreet', 'History', 75)</span></code></pre>
+                        </li>
+                        <li>
+                          It is also possible to insert multiple records at once. Predict how this might work, then look at the code below. <br><br>The following statement will insert three records at once - try it out:
+                        
+                            <pre><code><span class="cover">INTO scores (student_name, test_name, score) VALUES ('Quincy', 'Math', 74), ('Jakub', 'English', 67), ('Ada', 'Science', 90)</span></code></pre>
+
+                        </li>
+
                     </ol>
+                </div>
+
           
         </div>
       </div>
