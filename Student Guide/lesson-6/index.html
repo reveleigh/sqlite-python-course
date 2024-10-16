@@ -28,183 +28,346 @@
       </h1>
       <div class="card">
         <div class="card-body">
-            <h2 class="card-title">Lesson Overview</h2>
-            <p>In this lesson we will take a slightly different approach. We will start with a blank database then populate it with data about students test scores.</p>
+          <h2 class="card-title">Lesson Overview</h2>
+          <p>
+            In this lesson we will take a slightly different approach. We will
+            start with a blank database then populate it with data about
+            students test scores.
+          </p>
+          <ol>
+            <li>
+              <b>Creating a Database:</b> Starting from scratch with a new
+              database
+            </li>
+            <li>
+              <b>Creating Tables:</b> Defining the structure of the database
+            </li>
+            <li><b>Inserting Data:</b> Adding records to the database</li>
+            <li>
+              <b>Implementing in Python:</b> Writing a Python script to insert
+              data
+            </li>
+          </ol>
+
+          <img
+            class="screenshot"
+            src="../images/classroom.jpg"
+            alt="Classroom"
+          />
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> Creating From Scratch:
+              Building a <span class="redacted">Database</span> with CREATE
+            </h5>
+            <p class="concept">
+              Imagine constructing a new building. You wouldn't start by
+              haphazardly placing bricks and mortar; you'd begin with a
+              blueprint, a plan that outlines the structure and organization of
+              the building. Similarly, in the world of
+              <span class="redacted">databases</span>, the
+              <span class="redacted">CREATE</span> statement acts as your
+              blueprint, allowing you to define the structure of your database
+              and its constituent <span class="redacted">tables</span> from the
+              ground up.
+            </p>
+            <p class="concept">
+              The <span class="redacted">CREATE</span> statement is a powerful
+              tool that empowers you to bring
+              <span class="redacted">databases</span> and
+              <span class="redacted">tables</span> into existence. It's akin to
+              an architect's pen, sketching out the framework of your data
+              storage. With <span class="redacted">CREATE</span>, you can
+              specify the name of your database, the names and data types of
+              your tables' columns, and even constraints to ensure data
+              integrity.
+            </p>
+            <p class="concept">
+              For instance, to create a
+              <span class="redacted">database</span> named "my_database" with a
+              <span class="redacted">table</span> called "users" containing
+              columns for "id," "name," and "email," you would use a series of
+              <span class="redacted">CREATE</span> statements, each carefully
+              crafted to define the structure and properties of your database
+              and its tables.
+            </p>
+            <p class="concept">
+              The <span class="redacted">CREATE</span> statement is the
+              foundation upon which you build your
+              <span class="redacted">database</span>, a testament to your
+              ability to shape and mold data structures to your will. It's the
+              starting point of your database journey, a blank canvas upon which
+              you can paint your data masterpiece.
+            </p>
+          </div>
+          <h2 class="card-title">Creating a Database</h2>
+          <p>
+            Before we can start adding data to a database, we need to create the
+            database itself. We will use the
+            <code>CREATE DATABASE</code> statement to do this.
+          </p>
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" />Task: Creating Tables in A
+              Blank Database
+            </h5>
             <ol>
-                <li><b>Creating a Database:</b> Starting from scratch with a new database</li>
-                <li><b>Creating Tables:</b> Defining the structure of the database</li>
-                <li><b>Inserting Data:</b> Adding records to the database</li>
-                <li><b>Implementing in Python:</b> Writing a Python script to insert data</li>
-            </ol>
+              <li>Create a table for student test scores</li>
 
-            <img class="screenshot" src="../images/classroom.jpg" alt="Classroom" />
-            <div class="concept-box">
-                <h5 class="card-title">
-                  <img src="../images/bookmark-book.svg" /> Creating From Scratch: Building a <span class="redacted">Database</span> with CREATE
-                </h5>
-                <p class="concept">
-                  Imagine constructing a new building. You wouldn't start by haphazardly placing bricks and mortar; you'd begin with a blueprint, a plan that outlines the structure and organization of the building. Similarly, in the world of <span class="redacted">databases</span>, the <span class="redacted">CREATE</span> statement acts as your blueprint, allowing you to define the structure of your database and its constituent <span class="redacted">tables</span> from the ground up.
-                </p>
-                <p class="concept">
-                  The <span class="redacted">CREATE</span> statement is a powerful tool that empowers you to bring <span class="redacted">databases</span> and <span class="redacted">tables</span> into existence. It's akin to an architect's pen, sketching out the framework of your data storage. With <span class="redacted">CREATE</span>, you can specify the name of your database, the names and data types of your tables' columns, and even constraints to ensure data integrity.
-                </p>
-                <p class="concept">
-                  For instance, to create a <span class="redacted">database</span> named "my_database" with a <span class="redacted">table</span> called "users" containing columns for "id," "name," and "email," you would use a series of <span class="redacted">CREATE</span> statements, each carefully crafted to define the structure and properties of your database and its tables.
-                </p>
-                <p class="concept">
-                  The <span class="redacted">CREATE</span> statement is the foundation upon which you build your <span class="redacted">database</span>, a testament to your ability to shape and mold data structures to your will. It's the starting point of your database journey, a blank canvas upon which you can paint your data masterpiece.
-                </p>
-              </div>
-                <h2 class="card-title">Creating a Database</h2>
-                <p>Before we can start adding data to a database, we need to create the database itself. We will use the <code>CREATE DATABASE</code> statement to do this.</p>
-                <div class="task-box">
-                    <h5 class="card-title"><img src="../images/task-list.svg">Task: Creating Tables in A Blank Database</h5>
-                    <ol>
+              <ul>
                 <li>
-                        Create a table for student test scores
-                    </li>
-                    </ul>
-                    <ul>
-                        <li>Enter the following SQL statement: <pre><code>CREATE TABLE scores (id INTEGER PRIMARY KEY, student_name TEXT, test_name TEXT, score INTEGER)</code></pre></li>
-                        <li>Click the "Run" button</li>
-                    </ul>
-                        <li>Check that you have successfully created a databse by clicking on the database structure tab. You should see the below:
-                            <img class="screenshot" src="screenshots/database-structure.png" alt="Database Structure" />
-                        </li>
-                    </ol>
-                </div>
-                <p>
-                    Now that we have a database and a table, we can start adding data to it. We will use the <code>INSERT INTO</code> statement to do this.
-                </p>
-                <div class="concept-box">
-                    <h5 class="card-title">
-                      <img src="../images/bookmark-book.svg" /> Deconstructing the CREATE <span class="redacted">TABLE</span> Statement
-                    </h5>
-                    <p class="concept">
-                      Let's break down this <span class="redacted">SQL</span> statement piece-by-piece to understand how it creates a <span class="redacted">table</span> named "scores":
-                    </p>
-                    <ol>
-                      <li class="concept"><b><code><span class="redacted">CREATE TABLE scores</span></code></b>: This part declares our intention to create a new <span class="redacted">table</span> and gives it the name "scores."  Think of it as the title of a new chapter in your database.</li>
-                      <li class="concept"><b><code>(id INTEGER PRIMARY KEY, student_name TEXT, test_name TEXT, score INTEGER)</code></b>:  This section defines the structure of the <span class="redacted">table</span>, specifying the columns it will contain and their data types.</li>
-                          <ul>
-                              <li class="concept"><b><code><span class="redacted">id INTEGER PRIMARY KEY</span></code></b>: This creates a column named "id" to store integer values. The <code>PRIMARY KEY</code> constraint designates this column as the unique identifier for each row in the <span class="redacted">table</span>, ensuring that no two rows have the same "id."</li>
-                              <li class="concept"><b><code><span class="redacted">student_name TEXT</span></code></b>: This creates a column named "student_name" to store text values, presumably the names of the students who took the tests.</li>
-                              <li class="concept"><b><code><span class="redacted">test_name TEXT</span></code></b>: This creates a column named "test_name" to store text values, likely the names of the tests taken.</li>
-                              <li class="concept"><b><code><span class="redacted">score INTEGER</span></code></b>: This creates a column named "score" to store <span class="redacted">integer</span> values, representing the scores achieved on the tests.</li>
-                          </ul>
-                      </li>
-                    </ol>
-                    <p class="concept">
-                      In essence, this <span class="redacted">SQL</span> statement creates a structured <span class="redacted">table</span> named "scores" with four columns: a unique identifier ("id"), the student's name ("student_name"), the test name ("test_name"), and the score achieved ("score").  This <span class="redacted">table</span> is now ready to store data about test results in an organized and efficient manner.
-                    </p>
-                  </div>
-                <h2 class="card-title">Inserting Data</h2>
-                <p>
-                    Let's start adding some data to our scores table. 
-                </p>
-                <div class="task-box">
-                    <h5 class="card-title"><img src="../images/task-list.svg">Task: Inserting Data Into A Table</h5>
-                    <ol>
-                        <li>Insert a record into the scores table</li>
-                        <ul>
-                            <li>Enter the following SQL statement: <pre><code>INSERT INTO scores (student_name, test_name, score) VALUES ('Alice', 'Math', 95)</code></pre></li>
-                            <li>Click the "Run" button</li>
-                        </ul>
-                        <li>Check that you have successfully inserted a record by clicking on the data tab. You should see the below:<br>
-                            
-                            <img class="screenshot" src="screenshots/insert-example.png" alt="Inserted Data" />
-                        </li>
-                    </ol>
-                </div>
-                <p>
-                You have now successfully inserted data into a table. Practice by inserting more records into the table.
-                </p>
-                <div class="task-box">
-                    <h5 class="card-title"><img src="../images/task-list.svg">Task: Inserting More Data</h5>
-                    
-                    <p>Add in the following records. See if you can do it without peeking.</p>
-                    <ol>
-                        <li>
-                            Rupert scored 85 on his English test
-                            <pre><code><span class="cover">INSERT INTO scores (student_name, test_name, score) VALUES ('Rupert', 'English', 85)</span></code></pre>
-                        </li>
-                        <li>
-                            Sarah scored 90 on her Science test
-                            <pre><code><span class="cover">INSERT INTO scores (student_name, test_name, score) VALUES ('Sarah', 'Science', 90)</span></code></pre>
-                        </li>
-                        <li>
-                            Harpreet scored 75 on his History test
-                            <pre><code><span class="cover">INSERT INTO scores (student_name, test_name, score) VALUES ('Harpreet', 'History', 75)</span></code></pre>
-                        </li>
-                        <li>
-                          It is also possible to insert multiple records at once. Predict how this might work, then look at the code below. <br><br>The following statement will insert three records at once - try it out:
-                        
-                            <pre><code><span class="cover">INSERT INTO scores (student_name, test_name, score) VALUES ('Quincy', 'Math', 74), ('Jakub', 'English', 67), ('Ada', 'Science', 90)</span></code></pre>
+                  Enter the following SQL statement:
+                  <pre><code>CREATE TABLE scores (id INTEGER PRIMARY KEY, student_name TEXT, test_name TEXT, score INTEGER)</code></pre>
+                </li>
+                <li>Click the "Run" button</li>
+              </ul>
+              <li>
+                Check that you have successfully created a databse by clicking
+                on the database structure tab. You should see the below:
+                <img
+                  class="screenshot"
+                  src="screenshots/database-structure.png"
+                  alt="Database Structure"
+                />
+              </li>
+            </ol>
+          </div>
+          <p>
+            Now that we have a database and a table, we can start adding data to
+            it. We will use the <code>INSERT INTO</code> statement to do this.
+          </p>
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> Deconstructing the
+              CREATE <span class="redacted">TABLE</span> Statement
+            </h5>
+            <p class="concept">
+              Let's break down this <span class="redacted">SQL</span> statement
+              piece-by-piece to understand how it creates a
+              <span class="redacted">table</span> named "scores":
+            </p>
+            <ol>
+              <li class="concept">
+                <b
+                  ><code
+                    ><span class="redacted">CREATE TABLE scores</span></code
+                  ></b
+                >: This part declares our intention to create a new
+                <span class="redacted">table</span> and gives it the name
+                "scores." Think of it as the title of a new chapter in your
+                database.
+              </li>
+              <li class="concept">
+                <b
+                  ><code
+                    >(id INTEGER PRIMARY KEY, student_name TEXT, test_name TEXT,
+                    score INTEGER)</code
+                  ></b
+                >: This section defines the structure of the
+                <span class="redacted">table</span>, specifying the columns it
+                will contain and their data types.
+              </li>
+              <ul>
+                <li class="concept">
+                  <b
+                    ><code
+                      ><span class="redacted"
+                        >id INTEGER PRIMARY KEY</span
+                      ></code
+                    ></b
+                  >: This creates a column named "id" to store integer values.
+                  The <code>PRIMARY KEY</code> constraint designates this column
+                  as the unique identifier for each row in the
+                  <span class="redacted">table</span>, ensuring that no two rows
+                  have the same "id."
+                </li>
+                <li class="concept">
+                  <b
+                    ><code
+                      ><span class="redacted">student_name TEXT</span></code
+                    ></b
+                  >: This creates a column named "student_name" to store text
+                  values, presumably the names of the students who took the
+                  tests.
+                </li>
+                <li class="concept">
+                  <b
+                    ><code
+                      ><span class="redacted">test_name TEXT</span></code
+                    ></b
+                  >: This creates a column named "test_name" to store text
+                  values, likely the names of the tests taken.
+                </li>
+                <li class="concept">
+                  <b
+                    ><code><span class="redacted">score INTEGER</span></code></b
+                  >: This creates a column named "score" to store
+                  <span class="redacted">integer</span> values, representing the
+                  scores achieved on the tests.
+                </li>
+              </ul>
+            </ol>
+            <p class="concept">
+              In essence, this <span class="redacted">SQL</span> statement
+              creates a structured <span class="redacted">table</span> named
+              "scores" with four columns: a unique identifier ("id"), the
+              student's name ("student_name"), the test name ("test_name"), and
+              the score achieved ("score"). This
+              <span class="redacted">table</span> is now ready to store data
+              about test results in an organized and efficient manner.
+            </p>
+          </div>
+          <h2 class="card-title">Inserting Data</h2>
+          <p>Let's start adding some data to our scores table.</p>
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" />Task: Inserting Data Into A
+              Table
+            </h5>
+            <ol>
+              <li>Insert a record into the scores table</li>
+              <ul>
+                <li>
+                  Enter the following SQL statement:
+                  <pre><code>INSERT INTO scores (student_name, test_name, score) VALUES ('Alice', 'Math', 95)</code></pre>
+                </li>
+                <li>Click the "Run" button</li>
+              </ul>
+              <li>
+                Check that you have successfully inserted a record by clicking
+                on the data tab. You should see the below:<br />
 
-                        </li>
+                <img
+                  class="screenshot"
+                  src="screenshots/insert-example.png"
+                  alt="Inserted Data"
+                />
+              </li>
+            </ol>
+          </div>
+          <p>
+            You have now successfully inserted data into a table. Practice by
+            inserting more records into the table.
+          </p>
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" />Task: Inserting More Data
+            </h5>
 
-                    </ol>
-                </div>
-                <p>
-                    You have now successfully inserted multiple records into a table. 
-                </p>
-                <div class="concept-box">
-                  <h5 class="card-title">
-                    <img src="../images/bookmark-book.svg" /> The Power of Bulk Inserts
-                  </h5>
-                  <p class="concept">
-                    Imagine having to add hundreds or even thousands of test scores to add, one at a time. The task would be tedious and time-consuming. Fortunately, in the world of databases, the <span class="redacted">INSERT INTO</span> statement offers a powerful feature: the ability to add multiple records with a single command.
-                  </p>
-                  <p class="concept">
-                    This <span class="redacted">bulk</span> insert capability allows you to efficiently populate your tables with data, saving you from the monotony of inserting each record individually. By providing multiple sets of <span class="redacted">VALUES</span>, each enclosed in parentheses and separated by commas, you can insert multiple rows at once.
-                  </p>
-                  <p class="concept">
-                    For instance, the statement:
-                  </p>
-                  <pre><code>INSERT INTO scores (student_name, test_name, score) VALUES ('Quincy', 'Math', 74), ('Jakub', 'English', 67), ('Ada', 'Science', 90);</code></pre>
-                  <p class="concept">
-                    adds three new rows to the "scores" table with a single command. This <span class="redacted">streamlines</span> the process of data entry, allowing you to quickly and efficiently populate your database with large amounts of information.
-                  </p>
-                  
-                </div>
+            <p>
+              Add in the following records. See if you can do it without
+              peeking.
+            </p>
+            <ol>
+              <li>
+                Rupert scored 85 on his English test
+                <pre><code><span class="cover">INSERT INTO scores (student_name, test_name, score) VALUES ('Rupert', 'English', 85)</span></code></pre>
+              </li>
+              <li>
+                Sarah scored 90 on her Science test
+                <pre><code><span class="cover">INSERT INTO scores (student_name, test_name, score) VALUES ('Sarah', 'Science', 90)</span></code></pre>
+              </li>
+              <li>
+                Harpreet scored 75 on his History test
+                <pre><code><span class="cover">INSERT INTO scores (student_name, test_name, score) VALUES ('Harpreet', 'History', 75)</span></code></pre>
+              </li>
+              <li>
+                It is also possible to insert multiple records at once. Predict
+                how this might work, then look at the code below.
+                <br /><br />The following statement will insert three records at
+                once - try it out:
+
+                <pre><code><span class="cover">INSERT INTO scores (student_name, test_name, score) VALUES ('Quincy', 'Math', 74), ('Jakub', 'English', 67), ('Ada', 'Science', 90)</span></code></pre>
+              </li>
+            </ol>
+          </div>
+          <p>
+            You have now successfully inserted multiple records into a table.
+          </p>
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> The Power of Bulk
+              Inserts
+            </h5>
+            <p class="concept">
+              Imagine having to add hundreds or even thousands of test scores to
+              add, one at a time. The task would be tedious and time-consuming.
+              Fortunately, in the world of databases, the
+              <span class="redacted">INSERT INTO</span> statement offers a
+              powerful feature: the ability to add multiple records with a
+              single command.
+            </p>
+            <p class="concept">
+              This <span class="redacted">bulk</span> insert capability allows
+              you to efficiently populate your tables with data, saving you from
+              the monotony of inserting each record individually. By providing
+              multiple sets of <span class="redacted">VALUES</span>, each
+              enclosed in parentheses and separated by commas, you can insert
+              multiple rows at once.
+            </p>
+            <p class="concept">For instance, the statement:</p>
+            <pre><code>INSERT INTO scores (student_name, test_name, score) VALUES ('Quincy', 'Math', 74), ('Jakub', 'English', 67), ('Ada', 'Science', 90);</code></pre>
+            <p class="concept">
+              adds three new rows to the "scores" table with a single command.
+              This <span class="redacted">streamlines</span> the process of data
+              entry, allowing you to quickly and efficiently populate your
+              database with large amounts of information.
+            </p>
+          </div>
 
           <h2 class="card-title">Implementing in Python</h2>
           <p>
-            Now that we have learned how to create a database, create tables, and insert data, let's see how we can do this in Python. We will use the <code>sqlite3</code> library to interact with our database.  
+            Now that we have learned how to create a database, create tables,
+            and insert data, let's see how we can do this in Python. We will use
+            the <code>sqlite3</code> library to interact with our database.
           </p>
           <div class="task-box">
-            <h5 class="card-title"><img src="../images/task-list.svg">Task: Inserting Data Using Python</h5>
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" />Task: Inserting Data Using
+              Python
+            </h5>
             <p>
-            In the lesson resources you will find a Pythong script that adds records to our students.db database. It prompts the user to input the student name, test name and their score. It then gives a success message and returns the highest score yet for that test name. 
-          </p>
-          <ol>
-            <li>Look over the file - make sure to place it in the same folder as your students.db database. See if you can work out what code is missing.
-              <img class="screenshot" src="screenshots/insert_scores.png" alt="Python Script to insert scores" />
-            </li>
-            <li>
-              If you are really stuck, refer to below for the missing code - you can also the final script in the lesson resources.
-              <ul>
-                <li>
-                  <pre><code><span class="cover">cursor.execute("INSERT INTO scores (student_name, test_name, score) VALUES (?, ?, ?)", (student_name, test_name, score))</span></code></pre>
-                </li>
-                <li>
-                  <pre><code><span class="cover">cursor.execute("SELECT student_name, score FROM scores WHERE test_name = ? ORDER BY score DESC LIMIT 1", (test_name,))</span></code></pre>
-                </li>
-              </ul>
-            </li>
-          </ol>
+              In the lesson resources you will find a Pythong script that adds
+              records to our students.db database. It prompts the user to input
+              the student name, test name and their score. It then gives a
+              success message and returns the highest score yet for that test
+              name.
+            </p>
+            <ol>
+              <li>
+                Look over the file - make sure to place it in the same folder as
+                your students.db database. See if you can work out what code is
+                missing.
+                <img
+                  class="screenshot"
+                  src="screenshots/insert_scores.png"
+                  alt="Python Script to insert scores"
+                />
+              </li>
+              <li>
+                If you are really stuck, refer to below for the missing code -
+                you can also the final script in the lesson resources.
+                <ul>
+                  <li>
+                    <pre><code><span class="cover">cursor.execute("INSERT INTO scores (student_name, test_name, score) VALUES (?, ?, ?)", (student_name, test_name, score))</span></code></pre>
+                  </li>
+                  <li>
+                    <pre><code><span class="cover">cursor.execute("SELECT student_name, score FROM scores WHERE test_name = ? ORDER BY score DESC LIMIT 1", (test_name,))</span></code></pre>
+                  </li>
+                </ul>
+              </li>
+            </ol>
           </div>
-         <h2 class="card-title">Lesson Summary</h2>
+          <h2 class="card-title">Lesson Summary</h2>
           <p>
-            In this lesson we have learned how to create a database, create tables and insert data into those tables. We have also seen how to do this in Python.
+            In this lesson we have learned how to create a database, create
+            tables and insert data into those tables. We have also seen how to
+            do this in Python.
           </p>
           <p>
             <a href="../lesson-7" class="btn btn-dark-blue">
               Onwards To Lesson 7
             </a>
           </p>
-
-          </ol>
         </div>
       </div>
     </div>
