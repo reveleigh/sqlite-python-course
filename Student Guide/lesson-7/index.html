@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning SQL: Aggregate Functions</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sono:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <script src="../scripts/script.js" defer></script>
+  </head>
+
+  <body>
+    <a href="../">
+      <img id="fixed-icon" src="../images/home.svg" alt="Open book" />
+    </a>
+    <div class="container">
+      <h1 class="display-8 text-center mt-5 mb-4">
+        Lesson 4 - Aggregate Functions in SQLite
+      </h1>
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Lesson Overview</h2>
+          <p>
+            In this lesson, we'll delve into the powerful capabilities of
+            aggregate functions in SQLite. These functions allow us to perform
+            calculations on sets of data and extract meaningful insights. We'll
+            be working with the "customer_sales.db" database, which contains
+            information about customer transactions. We'll cover:
+          </p>
+
+          <ol>
+            <li>
+              <b>What are Aggregate Functions?</b> Understanding the purpose
+              and types of aggregate functions.
+            </li>
+            <li>
+              <b>Common Aggregate Functions:</b> Exploring functions like
+              <code>COUNT()</code>, <code>SUM()</code>,
+              <code>AVG()</code>, <code>MAX()</code>, and
+              <code>MIN()</code>.
+            </li>
+            <li>
+              <b>Using Aggregate Functions:</b> Applying these functions to
+              real-world scenarios with the "customer_sales.db" database.
+            </li>
+            <li>
+              <b>Combining with Python:</b> Integrating aggregate functions
+              into Python scripts for dynamic data analysis.
+            </li>
+          </ol>
+          <p>
+            <img
+              class="screenshot"
+              src="../images/customer_sales.jpg"
+              alt="Customer Sales Database"
+            />
+          </p>
+          <div class="concept-box">
+            <h2 class="card-title">
+              <img src="../images/bookmark-book.svg" /> What are Aggregate
+              Functions?
+            </h2>
+            <p>
+              Aggregate functions are SQL functions that operate on a set of
+              values and return a single value summarizing the input data. They
+              are essential for data analysis and reporting, providing insights
+              into trends, patterns, and overall characteristics of your data.
+            </p>
+
+            <p>
+              Imagine you have a table with sales data for various products.
+              Instead of manually calculating the total sales for each product,
+              you can use the <code>SUM()</code> aggregate function to do the
+              heavy lifting for you. Similarly, you can use
+              <code>AVG()</code> to find the average sale price,
+              <code>COUNT()</code> to determine the number of sales, and
+              <code>MAX()</code>/<code>MIN()</code> to identify the highest
+              and lowest sale values.
+            </p>
+          </div>
+          <h2 class="card-title">Common Aggregate Functions</h2>
+          <p>
+            SQLite provides a variety of aggregate functions to cater to
+            different analytical needs. Here are some of the most commonly
+            used ones:
+          </p>
+          <ul>
+            <li>
+              <b><code>COUNT()</code></b>: Counts the number of rows that
+              match a specified criteria.
+            </li>
+            <li>
+              <b><code>SUM()</code></b>: Calculates the sum of a numeric
+              column.
+            </li>
+            <li>
+              <b><code>AVG()</code></b>: Determines the average value of a
+              numeric column.
+            </li>
+            <li>
+              <b><code>MAX()</code></b>: Retrieves the maximum value in a
+              column.
+            </li>
+            <li>
+              <b><code>MIN()</code></b>: Retrieves the minimum value in a
+              column.
+            </li>
+          </ul>
+
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Explore Aggregate
+              Functions in DB Browser
+            </h5>
+
+            <p>
+              Let's get hands-on with these functions using the
+              "customer_sales.db" database.
+            </p>
+            <ol>
+              <li>
+                Download the "customer_sales.db" database from the Lesson 4
+                resource folder.
+              </li>
+              <li>
+                Open the database in DB Browser and familiarize yourself with
+                the "sales" table. It contains information about customer
+                purchases, including product IDs, quantities, and prices.
+              </li>
+              <li>
+                In the "Execute SQL" tab, try running the following queries to
+                see aggregate functions in action:
+                <ul>
+                  <li>
+                    <b>Count the total number of sales:</b>
+                    <code>SELECT COUNT(*) FROM sales;</code>
+                  </li>
+                  <li>
+                    <b>Calculate the total revenue:</b>
+                    <code>SELECT SUM(quantity * price) FROM sales;</code>
+                  </li>
+                  <li>
+                    <b>Find the average sale value:</b>
+                    <code>SELECT AVG(quantity * price) FROM sales;</code>
+                  </li>
+                  <li>
+                    <b>Identify the highest quantity sold in a single
+                    transaction:</b>
+                    <code>SELECT MAX(quantity) FROM sales;</code>
+                  </li>
+                  <li>
+                    <b>Identify the lowest quantity sold in a single
+                    transaction:</b>
+                    <code>SELECT MIN(quantity) FROM sales;</code>
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+
+          <h2 class="card-title">Combining with Python</h2>
+          <p>
+            Now, let's integrate these aggregate functions into our Python
+            scripts to perform dynamic data analysis.
+          </p>
+
+          <div class="task-box">
+            <h5 class="card-title">
+              <img src="../images/task-list.svg" /> Task: Aggregate Functions
+              in Python
+            </h5>
+            <p>
+              Here's a Python script that connects to the
+              "customer_sales.db" database and calculates the total revenue
+              using the <code>SUM()</code> function:
+            </p>
+            <img
+              class="screenshot"
+              src="screenshots/python_aggregate.png"
+              alt="Python Aggregate Function Code"
+            />
+            <p>
+              This script demonstrates how to embed SQL queries with aggregate
+              functions within your Python code. You can modify the query to
+              incorporate other aggregate functions or add user input to make
+              it more dynamic.
+            </p>
+          </div>
+          <h2 class="card-title">Lesson Summary</h2>
+          <p>
+            In this lesson, we've explored the power of aggregate functions in
+            SQLite, enabling us to perform calculations on sets of data and
+            extract meaningful insights. We've learned about common aggregate
+            functions like <code>COUNT()</code>, <code>SUM()</code>,
+            <code>AVG()</code>, <code>MAX()</code>, and
+            <code>MIN()</code>, and applied them to real-world scenarios
+            using the "customer_sales.db" database. Furthermore, we've
+            integrated these functions into Python scripts, showcasing the
+            flexibility and dynamism they bring to data analysis.
+          </p>
+          <p>
+            <a href="../lesson-5" class="btn btn-dark-blue">
+              Onwards To Lesson 5
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
