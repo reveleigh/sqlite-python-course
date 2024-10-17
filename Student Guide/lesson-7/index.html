@@ -29,34 +29,27 @@
       <div class="card">
         <div class="card-body">
           <h2 class="card-title">Lesson Overview</h2>
-          <p>
-            In this lesson, we'll delve into the powerful capabilities of
-            aggregate functions in SQLite. These functions allow us to perform
-            calculations on sets of data and extract meaningful insights. We'll
-            be working with the "customer_sales.db" database, which contains
-            information about customer transactions. We'll cover:
-          </p>
+<p>
+  In this lesson, we'll explore the practical world of analysing sales data using SQL aggregate functions and wildcard searches. We'll be working with the "sales.db" database, which contains a table called "phone_sales" with information about mobile phone sales.
+</p>
 
-          <ol>
-            <li>
-              <b>What are Aggregate Functions?</b> Understanding the purpose
-              and types of aggregate functions.
-            </li>
-            <li>
-              <b>Common Aggregate Functions:</b> Exploring functions like
-              <code>COUNT()</code>, <code>SUM()</code>,
-              <code>AVG()</code>, <code>MAX()</code>, and
-              <code>MIN()</code>.
-            </li>
-            <li>
-              <b>Using Aggregate Functions:</b> Applying these functions to
-              real-world scenarios with the "customer_sales.db" database.
-            </li>
-            <li>
-              <b>Combining with Python:</b> Integrating aggregate functions
-              into Python scripts for dynamic data analysis.
-            </li>
-          </ol>
+
+
+
+<ol>
+  <li>
+    <b>What are Aggregate Functions?</b>  Understanding how these functions help you summarise and analyse data.
+  </li>
+  <li>
+    <b>COUNT, SUM, AVG, MAX, MIN:</b>  Exploring the most commonly used aggregate functions.
+  </li>
+  <li>
+    <b>Wildcards and LIKE:</b>  Searching for patterns in text data.
+  </li>
+  <li>
+    <b>Analysing Sales Data with Python:</b>  Implementing aggregate functions and wildcards in a Python script.
+  </li>
+</ol>
           <p>
             <img
               class="screenshot"
@@ -64,56 +57,53 @@
               alt="Phone"
             />
           </p>
-          <div class="concept-box">
-            <h2 class="card-title">
-              <img src="../images/bookmark-book.svg" /> What are Aggregate
-              Functions?
-            </h2>
-            <p>
-              Aggregate functions are SQL functions that operate on a set of
-              values and return a single value summarizing the input data. They
-              are essential for data analysis and reporting, providing insights
-              into trends, patterns, and overall characteristics of your data.
-            </p>
+          
 
-            <p>
-              Imagine you have a table with sales data for various products.
-              Instead of manually calculating the total sales for each product,
-              you can use the <code>SUM()</code> aggregate function to do the
-              heavy lifting for you. Similarly, you can use
-              <code>AVG()</code> to find the average sale price,
-              <code>COUNT()</code> to determine the number of sales, and
-              <code>MAX()</code>/<code>MIN()</code> to identify the highest
-              and lowest sale values.
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" /> Aggregate Functions: Finding Meaning in the Mundane
+            </h5>
+            <p class="concept">
+              Faced with an extensive record of <span class="redacted">sales data</span>, one might feel a sense of detachment from the individual <span class="redacted">transactions</span>, each a mere entry in a vast ledger.  Yet, it is often within these seemingly mundane records that valuable insights lie hidden.  <span class="redacted">Aggregate functions</span> in <span class="redacted">SQL</span> offer a way to unearth these insights, transforming raw data into meaningful summaries.
             </p>
+            <p class="concept">
+              SQLite provides a variety of aggregate functions to cater to
+              different analytical needs. Here are some of the most commonly
+              used ones:
+            </p>
+            <ul>
+              <li class="concept">
+                <b><code><span class="redacted">COUNT()</span></code></b>: Counts the number of rows that
+                match a specified criteria.
+              </li>
+              <li class="concept">
+                <b><code><span class="redacted">SUM()</span></code></b>: Calculates the sum of a numeric
+                column.
+              </li>
+              <li class="concept">
+                <b><code><span class="redacted">AVG()</span></code></b>: Determines the average value of a
+                numeric column.
+              </li>
+              <li class="concept">
+                <b><code><span class="redacted">MAX()</span></code></b>: Retrieves the maximum value in a
+                column.
+              </li>
+              <li class="concept">
+                <b><code><span class="redacted">MIN()</span></code></b>: Retrieves the minimum value in a
+                column.
+              </li>
+            </ul>
+            
+            
+           
           </div>
-          <h2 class="card-title">Common Aggregate Functions</h2>
+
+
+          <h2 class="card-title">Exploring Aggregate Functions in SQLite</h2>
+
           <p>
-            SQLite provides a variety of aggregate functions to cater to
-            different analytical needs. Here are some of the most commonly
-            used ones:
-          </p>
-          <ul>
-            <li>
-              <b><code>COUNT()</code></b>: Counts the number of rows that
-              match a specified criteria.
-            </li>
-            <li>
-              <b><code>SUM()</code></b>: Calculates the sum of a numeric
-              column.
-            </li>
-            <li>
-              <b><code>AVG()</code></b>: Determines the average value of a
-              numeric column.
-            </li>
-            <li>
-              <b><code>MAX()</code></b>: Retrieves the maximum value in a
-              column.
-            </li>
-            <li>
-              <b><code>MIN()</code></b>: Retrieves the minimum value in a
-              column.
-            </li>
+            Let's dive into the "phone_sales" table in the "sales.db" database to
+            see these aggregate functions in action.
           </ul>
 
           <div class="task-box">
@@ -124,11 +114,11 @@
 
             <p>
               Let's get hands-on with these functions using the
-              "customer_sales.db" database.
+              "sales.db" database.
             </p>
             <ol>
               <li>
-                Download the "customer_sales.db" database from the Lesson 4
+                Download the "sales.db" database from the Lesson 7
                 resource folder.
               </li>
               <li>
