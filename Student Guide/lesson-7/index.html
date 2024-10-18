@@ -123,34 +123,26 @@
               </li>
               <li>
                 Open the database in DB Browser and familiarize yourself with
-                the "sales" table. It contains information about customer
+                the "phone_sales" table. It contains information about customer
                 purchases, including product IDs, quantities, and prices.
               </li>
               <li>
-                In the "Execute SQL" tab, try running the following queries to
-                see aggregate functions in action:
+                In the "Execute SQL" tab, try the following queries:
                 <ul>
-                  <li>
-                    <b>Count the total number of sales:</b>
-                    <code>SELECT COUNT(*) FROM sales;</code>
+                  <li>Calculate the total quantity of phones sold.
+                    <pre><code>SELECT SUM(count) FROM phone_sales;</code></pre>
                   </li>
-                  <li>
-                    <b>Calculate the total revenue:</b>
-                    <code>SELECT SUM(quantity * price) FROM sales;</code>
+                  <li>Find the average price of phones sold.
+                    <pre><code>SELECT AVG(count) FROM phone_sales;</code></pre>
                   </li>
-                  <li>
-                    <b>Find the average sale value:</b>
-                    <code>SELECT AVG(quantity * price) FROM sales;</code>
+                  <li>Determine the highest and lowest prices for phones.
+                    <pre><code>SELECT MAX(count), MIN(count) FROM phone_sales;</code></pre>
                   </li>
-                  <li>
-                    <b>Identify the highest quantity sold in a single
-                    transaction:</b>
-                    <code>SELECT MAX(quantity) FROM sales;</code>
+                  <li>Count the number of sales transactions where the quantity was greater than 5.
+                    <pre><code>SELECT COUNT(*) FROM phone_sales WHERE count > 2000;</code></pre>
                   </li>
-                  <li>
-                    <b>Identify the lowest quantity sold in a single
-                    transaction:</b>
-                    <code>SELECT MIN(quantity) FROM sales;</code>
+                  <li>Calculate the total revenue generated from each phone model.
+                    <pre><code>SELECT model, SUM(price * quantity) FROM phone_sales GROUP BY model;</code></pre>
                   </li>
                 </ul>
               </li>
