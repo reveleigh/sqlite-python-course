@@ -142,12 +142,96 @@
                     <pre><code>SELECT COUNT(*) FROM phone_sales WHERE count > 2000;</code></pre>
                   </li>
                   <li>Calculate the total revenue generated from each phone model.
-                    <pre><code>SELECT model, SUM(price * quantity) FROM phone_sales GROUP BY model;</code></pre>
+                    <pre><code>SELECT os, SUM(count) FROM phone_sales GROUP BY os;</code></pre>
                   </li>
                 </ul>
               </li>
             </ol>
           </div>
+          <p>
+            Using GROUP BY is an essential part of working with aggregate functions in SQL. It allows you to group rows that have the same values in a specified column, enabling you to perform aggregate calculations on these groups. 
+          </p>
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" />  Deconstructing the GROUP BY Query
+            </h5>
+            <p class="concept">
+              This SQL query dives into the sales data to calculate the total sales for each operating system (OS). Let's break down its components:
+            </p>
+            <ol>
+              <li class="concept"><b><code><span class="redacted">os, SUM(count)</span></code></b>: This part specifies that we want to retrieve two pieces of information:
+                  <ul>
+                      <li class="concept"><code>os</code>: The operating system itself.</li>
+                      <li class="concept"><code>SUM(count)</code>: The <span class="redacted">sum</span> of the "<span class="redacted">count</span>" column, which represents the total sales for that specific OS.</li>
+                  </ul>
+              </li>
+              <li class="concept"><b><code><span class="redacted">FROM phone_sales</span></code></b>: This indicates that we're retrieving data from the "phone_sales" table.</li>
+              <li class="concept"><b><code><span class="redacted">GROUP BY os</span></code></b>: This is the key to calculating totals for each OS. It groups the rows in the "<span class="redacted">phone_sales</span>" table by the "<span class="redacted">os</span>" column, so that the <code>SUM(count)</code> function calculates the sum for each distinct OS separately.</li>
+            </ol>
+            <p class="concept">
+              In essence, this query provides a breakdown of sales figures by operating system, allowing you to see which OS has the highest or lowest total sales.  It demonstrates the power of combining aggregate functions like SUM with the GROUP BY clause to analyse data at different levels of granularity.
+            </p>
+          </div>
+          <h2 class="card-title">Wildcards and LIKE</h2>
+          <p>
+            In addition to aggregate functions, SQLite offers the ability to
+            search for patterns within text data using wildcards and the
+            <code>LIKE</code> operator. This can be useful when you need to
+            filter data based on specific criteria.
+          </p>
+          <div class="task-box">
+            <h5 class="card-title task-title">
+              <img src="../images/task-list.svg" /> Task: Wildcards and LIKE
+            </h5>
+            <p>
+              Let's explore how to use wildcards and the <code>LIKE</code>
+              operator in SQL.
+            </p>
+            
+                Try the following queries in DB Browser:
+                <ol>
+                  <li>Find all phone operating systems that contain the word "Pro".
+                    <pre><code>SELECT * FROM phone_sales WHERE os LIKE '%Pro%';</code></pre>
+                  </li>
+                  <li>
+                    Search for operating systems that contain the word "Android" and have a count greater than 1000 sales.
+                    <pre><code>SELECT * FROM phone_sales WHERE os LIKE '%Android%' AND count > 1000;</code></pre>
+                  </li>
+                  <li>
+                    Search for operating systems that start "iOS".
+                    <pre><code>SELECT * FROM phone_sales WHERE os LIKE 'iOS%';</code></pre>
+                  </li>
+                  <li>
+                    Search for all sales of non-Android phones and non-Microsoft phones.
+                    <pre><code>SELECT * FROM phone_sales WHERE os NOT LIKE '%Android%' AND os NOT LIKE '%Microsoft%';</code></pre>
+                  </li>
+                </ol>
+              
+          </div>
+
+          <h5 class="card-title">Combing Aggregate Functions and Wildcards</h5>
+          <p>
+            Now it is time to combine aggregate functions with wildcards to perform more complex queries. Using the aggregate functions and wildcards together can help you gain deeper insights into your data.
+          </p>
+          <div class="task-box">
+            <h5 class="card-title task-title">
+              <img src="../images/task-list.svg" /> Task: Combining Aggregate Functions and Wildcards
+            </h5> 
+          Make and attempt at the below queries in DB Browser. If you get stuck, try the "Look, Cover, Query, Check" method to help you remember the syntax.
+          <ol>
+            <li>Calculate the total sales for phones with an OS starting with "Android".
+              <pre><code><span class="cover">SELECT SUM(count) FROM phone_sales WHERE os LIKE 'Android%';</span></code></pre>
+            </li>
+            <li>Find the average sales for phones with an OS containing "iOS".
+              <pre><code><span class="cover">SELECT AVG(count) FROM phone_sales WHERE os LIKE '%iOS%';</span></code></pre>
+            </li>
+            <li>Find the highest and lowest sales figures for phones with an OS not containing "feature".
+              <pre><code><span class="cover">SELECT MAX(count), MIN(count) FROM phone_sales WHERE os NOT LIKE '%feature%';</span></code></pre>
+            </li>
+          </ol>
+          </div>
+
+        
 
           <h2 class="card-title">Combining with Python</h2>
           <p>
@@ -157,26 +241,54 @@
 
           <div class="task-box">
             <h5 class="card-title">
-              <img src="../images/task-list.svg" /> Task: Aggregate Functions
-              in Python
+              <img src="../images/task-list.svg" />Task: Inserting Data Using
+              Python
             </h5>
             <p>
-              Here's a Python script that connects to the
-              "customer_sales.db" database and calculates the total revenue
-              using the <code>SUM()</code> function:
+              In the lesson resources you will find a Pythong script that prompt the user to input a mobile operating system to then receive the sum of the sales for that OS.
             </p>
-            <img
-              class="screenshot"
-              src="screenshots/python_aggregate.png"
-              alt="Python Aggregate Function Code"
-            />
-            <p>
-              This script demonstrates how to embed SQL queries with aggregate
-              functions within your Python code. You can modify the query to
-              incorporate other aggregate functions or add user input to make
-              it more dynamic.
-            </p>
+            <ol>
+              <li>
+                Look over the file - make sure to place it in the same folder as
+                your students.db database. See if you can work out what code is
+                missing.
+                <img
+                  class="screenshot"
+                  src="screenshots/sales.png"
+                  alt="Python Script to search sales"
+                />
+              </li>
+              <li>
+                If you are really stuck, refer to below for the missing code -
+                you can also the final script in the lesson resources.
+                <ul>
+                  <li>
+                    <pre><code><span class="cover">cursor.execute("SELECT SUM(count) FROM phone_sales WHERE os LIKE ?", ('%' + os_search + '%',))</span></code></pre>
+                  </li>
+                </ul>
+              </li>
+            </ol>
           </div>
+          <p>What's happening here?  Let's break it down:</p>
+          <div class="concept-box">
+            <h5 class="card-title">
+              <img src="../images/bookmark-book.svg" />  Wildcards and Concatenation: A Flexible Search Strategy
+            </h5>
+            <p class="concept">
+              In this Python-SQL <span class="redacted">hybrid</span>, the line <code>('%' + os_search + '%',)</code> showcases the power of combining wildcards and <span class="redacted">concatenation</span> to create flexible search patterns.
+            </p>
+            <p class="concept">
+              The `<span class="redacted">os_search</span>` variable holds the user's input, which represents the operating system they're interested in.  To search for this OS within the "phone_sales" table, we need to construct a pattern that matches any OS containing the user's input, even if it's part of a longer string.
+            </p>
+            <p class="concept">
+              This is where wildcards come in.  The `<span class="redacted">%</span>` symbol is a wildcard that matches any sequence of characters.  By concatenating (<span class="redacted">joining</span>) the `%` symbol with the `os_search` variable and another `%` symbol, we create a <span class="redacted">pattern</span> that matches any string containing the user's input, regardless of what comes before or after it.
+            </p>
+            <p class="concept">
+              For instance, if the user enters "Android", the pattern <code>'%' + os_search + '%'</code> becomes <code>'%Android%'</code>.  This will match any OS that includes the word "Android", such as "Android 4.3", "Android 11", or even "Android 8.0, EMUI 8".
+            </p>
+          
+          </div>
+
           <h2 class="card-title">Lesson Summary</h2>
           <p>
             In this lesson, we've explored the power of aggregate functions in
@@ -185,13 +297,13 @@
             functions like <code>COUNT()</code>, <code>SUM()</code>,
             <code>AVG()</code>, <code>MAX()</code>, and
             <code>MIN()</code>, and applied them to real-world scenarios
-            using the "customer_sales.db" database. Furthermore, we've
+            using the "sales.db" database. Furthermore, we've
             integrated these functions into Python scripts, showcasing the
             flexibility and dynamism they bring to data analysis.
           </p>
           <p>
-            <a href="../lesson-5" class="btn btn-dark-blue">
-              Onwards To Lesson 5
+            <a href="../lesson-8" class="btn btn-dark-blue">
+              Onwards To Lesson 8
             </a>
           </p>
         </div>

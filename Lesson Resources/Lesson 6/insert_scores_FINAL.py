@@ -8,12 +8,12 @@ def add_test_score():
     test_name = input("Enter test name: ")
     score = int(input("Enter score: "))
 
-    cursor.execute() # Add the missing code here
+    cursor.execute("INSERT INTO scores (student_name, test_name, score) VALUES (?, ?, ?)", (student_name, test_name, score))
     conn.commit()
 
     print("Score added successfully!")
 
-    cursor.execute() # Add the missing code here
+    cursor.execute("SELECT student_name, score FROM scores WHERE test_name = ? ORDER BY score DESC LIMIT 1", (test_name,))
     highest_scorer = cursor.fetchone()
 
     if highest_scorer:
