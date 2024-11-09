@@ -6,13 +6,13 @@ This is a series of lessons aimed at A-Level Computer students.
 
 ## How to Use This Repository
 
-1. Clone the repository to your local machine.
+1. Clone the repository to your local machine, or download as a ZIP file.
 2. Navigate to the `Lesson Resources` folder to find the lesson-specific resources and scripts.
 3. Follow along with the `Student Guide` for detailed instructions and explanations for each lesson.
 
 I currently have a live version of the student guide here, though this may be relocated in the future.
 
-![text](https://gwa-cs.web.app/databases/)
+I currently have a live version of the student guide [here](https://gwa-cs.web.app/databases/), though this may be relocated in the future.
 
 ![Screenshot](screenshot.png)
 
