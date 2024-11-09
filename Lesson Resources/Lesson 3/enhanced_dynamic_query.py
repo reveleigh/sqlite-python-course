@@ -41,7 +41,7 @@ def search_cars():
             print("\nMatching cars:")
             print("-" * 78)  # Print a separator line
             # Print the header row with column names centered within their respective widths
-            print("|{:^10}|{:^15}|{:^15}|{:^10}|{:^10}|{:^10}|".format("ID", "Make", "Model", "Year", "Colour", "Price"))
+            print("|{:^10}|{:^15}|{:^15}|{:^10}|{:^10}|{:^10}|".format("ID", "Make", "Model", "Colour", "Year", "Price"))
             # Print a separator line to visually separate the header from the data rows
             print("-" * 78)
             for row in results:
